@@ -1,3 +1,7 @@
+import 'package:fitness/features/screens/home_page.dart';
+import 'package:fitness/features/screens/news_page.dart';
+import 'package:fitness/features/screens/timetable_page.dart';
+import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -12,9 +16,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedTab = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text("HOME"),
-    Text("DESK"),
-    Text("NEWS"),
+    HomePageScreen(),
+    TimeTableScreen(),
+    NewsPageScreen(),
   ];
 
   void onSelectTab(int index) {
@@ -30,9 +34,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedTab,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: ColorHelper.blue01DDEB,
           unselectedItemColor: Colors.white,
-          backgroundColor: Color(0xff8A8A8A),
+          backgroundColor: Color(0xff878383),
           onTap: onSelectTab,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "HOME"),
