@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePageScreen extends StatelessWidget {
@@ -7,9 +6,14 @@ class HomePageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("BodyPower"),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Container(
-        width: 100,
+        width: 400,
         height: 100,
+        color: Colors.red,
       ),
     );
   }
