@@ -12,6 +12,7 @@ class TimeTableScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
+          centerTitle: true,
           title: Image.asset(
             "assets/images/BODYPOWER.png",
             width: 136.w,
