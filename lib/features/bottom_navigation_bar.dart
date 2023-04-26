@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:fitness/features/screens/home_page.dart';
 import 'package:fitness/features/screens/news_page.dart';
 import 'package:fitness/features/screens/timetable_page.dart';
@@ -38,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           unselectedItemColor: Colors.white,
           backgroundColor: Color(0xff878383),
           onTap: onSelectTab,
-          items: [
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "HOME"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.calendar_today), label: "DESK"),
