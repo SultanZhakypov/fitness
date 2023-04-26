@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../internal/helpers/color_helper.dart';
+import '../widgets/animated_container_widget.dart';
+import '../widgets/tabbar_view_widget.dart';
 
 class TimeTableScreen extends StatelessWidget {
   const TimeTableScreen({super.key});
@@ -20,7 +22,7 @@ class TimeTableScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         backgroundColor: ColorHelper.backgroundColor,
-        body: SingleChildScrollView(
+        body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -45,7 +47,9 @@ class TimeTableScreen extends StatelessWidget {
                     style: TextHelper.w700s18
                         .copyWith(color: ColorHelper.greyD1D3D3),
                   ),
-                )
+                ),
+                const AnimatedContainerWidget(),
+                TabbarViewWidget(),
               ],
             ),
           ),
