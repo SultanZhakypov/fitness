@@ -1,5 +1,7 @@
+import 'dart:math';
+
+import 'package:fitness/features/models/model.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +15,6 @@ class BloggerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      // physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: false,
       itemBuilder: (context, index) {
         return Container(
@@ -24,6 +25,10 @@ class BloggerCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             color: Colors.transparent,
             border: Border.all(width: 1, color: Colors.white10),
+            image: DecorationImage(
+                image: AssetImage(
+                    "${organImages[Random().nextInt(organImages.length)]}"),
+                fit: BoxFit.cover),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
