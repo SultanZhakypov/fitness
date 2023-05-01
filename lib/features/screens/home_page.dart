@@ -1,4 +1,3 @@
-import 'package:fitness/features/widgets/blogger_card.dart';
 import 'package:fitness/features/widgets/day_view_widget.dart';
 import 'package:fitness/features/widgets/week_view_widget.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
@@ -30,6 +29,35 @@ class HomePageScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  top: 48.h,
+                  bottom: 31.h,
+                ),
+                child: Text(
+                  "мои курсы".toUpperCase(),
+                  style: TextHelper.w700s20
+                      .copyWith(color: ColorHelper.greyD1D3D3),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.w),
+                child: SizedBox(
+                  height: 120,
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => Container(
+                            width: 200.w,
+                            height: 100.h,
+                            color: Colors.amber,
+                          ),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(width: 20.w),
+                      itemCount: 3),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.only(
                   left: 20.w,
