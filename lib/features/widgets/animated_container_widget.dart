@@ -128,7 +128,7 @@ class RihgtAlignWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment(1, 0),
+      alignment: const Alignment(1, 0),
       child: Container(
         width: 150.w,
         alignment: Alignment.center,
@@ -154,7 +154,7 @@ class LeftAlignWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment(-1, 0),
+      alignment: const Alignment(-1, 0),
       child: Container(
         // width: (width / 2) - 16,
         width: 150.w,
