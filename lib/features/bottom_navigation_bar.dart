@@ -5,8 +5,6 @@ import 'package:fitness/features/screens/news_page.dart';
 import 'package:fitness/features/screens/timetable_page.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

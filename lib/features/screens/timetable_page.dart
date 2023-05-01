@@ -49,7 +49,7 @@ class TimeTableScreen extends StatelessWidget {
                   ),
                 ),
                 const AnimatedContainerWidget(),
-                TabbarViewWidget(),
+                const TabbarViewWidget(),
               ],
             ),
           ),
