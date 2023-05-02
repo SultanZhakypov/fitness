@@ -1,8 +1,5 @@
 import 'package:fitness/internal/helpers/color_helper.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../internal/helpers/text_helper.dart';
@@ -31,14 +28,14 @@ class TabbarViewWidget extends StatelessWidget {
               indicatorWeight: 2,
               tabs: const <Widget>[
                 Tab(
-                  text: "Курсы для женщин",
+                  text: "Курсы для мужчин",
                 ),
                 Tab(
-                  text: "Курсы для мужчин",
+                  text: "Курсы для женщин",
                 ),
               ],
             ),
-             Expanded(
+            const Expanded(
               child: TabBarView(
                 children: <Widget>[
                   BloggerCard(),

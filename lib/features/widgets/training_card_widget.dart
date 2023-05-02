@@ -12,18 +12,25 @@ class TrainingCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: EdgeInsets.symmetric(
+        vertical: 30.h,
+        horizontal: 20.h,
+      ),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const TrainingScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TrainingScreen()));
           },
           child: Container(
             width: 353.w,
             height: 120.h,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
               border: Border.all(width: 1, color: Colors.white10),
               image: DecorationImage(
                 image: AssetImage("${organImages[index]}"),

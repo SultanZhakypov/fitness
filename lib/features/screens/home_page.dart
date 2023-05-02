@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../internal/helpers/text_helper.dart';
+import '../widgets/my_course_card.dart';
 import '../widgets/training_card_widget.dart';
 
 class HomePageScreen extends StatelessWidget {
@@ -41,28 +42,11 @@ class HomePageScreen extends StatelessWidget {
                       .copyWith(color: ColorHelper.greyD1D3D3),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 20.w),
-                child: SizedBox(
-                  height: 120,
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => Container(
-                            width: 200.w,
-                            height: 100.h,
-                            color: Colors.amber,
-                          ),
-                      separatorBuilder: (context, index) =>
-                          SizedBox(width: 20.w),
-                      itemCount: 3),
-                ),
-              ),
+              const MyCourseCard(),
               Padding(
                 padding: EdgeInsets.only(
                   left: 20.w,
-                  top: 48.h,
-                  bottom: 31.h,
+                  top: 40.h,
                 ),
                 child: Text(
                   "НЕДЕЛЯ",
@@ -82,18 +66,11 @@ class HomePageScreen extends StatelessWidget {
                       .copyWith(color: ColorHelper.greyD1D3D3),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 20.w,
-                  bottom: 30.h,
-                ),
-                child: const DayViewWidget(),
+              const Padding(
+                padding: EdgeInsets.only(),
+                child: DayViewWidget(),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: const TrainingCardWidget(),
-              ),
-              const SizedBox(height: 100)
+              const TrainingCardWidget(),
             ],
           ),
         ),

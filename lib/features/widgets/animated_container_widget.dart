@@ -134,7 +134,7 @@ class RihgtAlignWidget extends StatelessWidget {
         alignment: Alignment.center,
         color: Colors.transparent,
         child: Text(
-          "Зал",
+          "Дом",
           style: TextHelper.w700s15.copyWith(
             color:
                 isSelected ? ColorHelper.black000000 : ColorHelper.greyD1D3D3,
@@ -161,7 +161,7 @@ class LeftAlignWidget extends StatelessWidget {
         alignment: Alignment.center,
         color: Colors.transparent,
         child: Text(
-          "Дом",
+          "Зал",
           style: TextHelper.w700s15.copyWith(
             color:
                 isSelected ? ColorHelper.greyD1D3D3 : ColorHelper.black000000,

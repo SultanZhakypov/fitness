@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fitness/features/models/model.dart';
+import 'package:fitness/features/screens/course_information_screen.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,10 @@ class BloggerCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
             color: Colors.transparent,
-            border: Border.all(width: 1, color: Colors.white10),
+            border: Border.all(
+              width: 1,
+              color: ColorHelper.white10,
+            ),
             image: DecorationImage(
                 image: AssetImage(
                     "${organImages[Random().nextInt(organImages.length)]}"),
@@ -68,7 +72,12 @@ class BloggerCard extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return CourseInformationScreen();
+                      }));
+                    },
                     icon: Icon(
                       Icons.arrow_forward_ios_outlined,
                       color: ColorHelper.greyD1D3D3,

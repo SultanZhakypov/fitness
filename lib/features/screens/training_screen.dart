@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/approach_card.dart';
 import '../widgets/repitition_select_card.dart';
-import '../widgets/training_gift_widget.dart';
+import '../widgets/training_gift_card.dart';
 import '../widgets/weight_select_card.dart';
 
 class TrainingScreen extends StatefulWidget {
@@ -22,13 +21,13 @@ const List<String> weightList = <String>['10', '15', '20', '25'];
 const List<String> repetitionList = <String>['8', '10', '12', '14', '16', '18'];
 
 class _TrainingScreenState extends State<TrainingScreen>
-    with TickerProviderStateMixin {
-  late AnimationController controller;
+// with TickerProviderStateMixin
+{
+  // late AnimationController controller;
 
   double initial = 0.0;
   @override
   void initState() {
-    // start();
     super.initState();
   }
 
@@ -52,16 +51,22 @@ class _TrainingScreenState extends State<TrainingScreen>
   //   controller.repeat(reverse: false);
   // }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         elevation: 0,
         centerTitle: true,
         title: Image.asset(
