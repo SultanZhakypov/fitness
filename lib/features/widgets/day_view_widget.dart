@@ -4,8 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../internal/helpers/color_helper.dart';
 import '../../internal/helpers/text_helper.dart';
 
-class DayViewWidget extends StatelessWidget {
+class DayViewWidget extends StatefulWidget {
   const DayViewWidget({super.key});
+
+  @override
+  State<DayViewWidget> createState() => _DayViewWidgetState();
+}
+
+class _DayViewWidgetState extends State<DayViewWidget> {
+  bool isDone = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +25,19 @@ class DayViewWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                isDone = !isDone;
+              });
+            },
             child: Container(
               width: 33,
               height: 31,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: ColorHelper.blue01DDEB),
+                borderRadius: BorderRadius.circular(4),
+                color: isDone ? ColorHelper.blue01DDEB : ColorHelper.greyD1D3D3,
+              ),
               child: Text(
                 "${index + 1}",
                 style:
