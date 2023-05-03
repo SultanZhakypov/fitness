@@ -21,6 +21,12 @@ class HomePageScreen extends StatelessWidget {
           "assets/images/BODYPOWER.png",
           width: 136.w,
         ),
+        actions: [
+          Icon(Icons.settings),
+          SizedBox(
+            width: 15.w,
+          )
+        ],
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: ColorHelper.backgroundColor,

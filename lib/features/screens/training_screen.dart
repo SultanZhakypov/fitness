@@ -3,8 +3,8 @@ import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../widgets/approach_card.dart';
+import '../widgets/information_button_card.dart';
 import '../widgets/repitition_select_card.dart';
 import '../widgets/training_gift_card.dart';
 import '../widgets/weight_select_card.dart';
@@ -82,7 +82,8 @@ class _TrainingScreenState extends State<TrainingScreen>
           padding: EdgeInsets.all(20.h),
           child: Column(
             children: [
-              const TrainingGiftCard(),
+               TrainingGiftCard(),
+              InformationButtonCard(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
