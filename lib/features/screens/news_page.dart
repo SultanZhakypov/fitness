@@ -49,9 +49,10 @@ class _NewsPageScreenState extends State<NewsPageScreen> {
                         margin: EdgeInsets.all(20.r),
                         height: 350.h,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(
-                                colors: [Colors.blueGrey, Colors.deepPurple])),
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                              colors: [Colors.blueGrey, Colors.deepPurple]),
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.all(22.r),

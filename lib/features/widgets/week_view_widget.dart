@@ -11,6 +11,8 @@ class WeekViewWidget extends StatefulWidget {
 }
 
 class _WeekViewWidgetState extends State<WeekViewWidget> {
+  bool isDone = false;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,18 +27,29 @@ class _WeekViewWidgetState extends State<WeekViewWidget> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                isDone = !isDone;
+              });
+            },
             child: Container(
-              width: 92.w,
+              width: 100.w,
               height: 31.h,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: ColorHelper.blue01DDEB),
-              child: Text(
-                "неделя ${index + 1}",
-                style:
-                    TextHelper.w700s15.copyWith(color: ColorHelper.black000000),
+                borderRadius: BorderRadius.circular(4),
+                color: isDone ? ColorHelper.blue01DDEB : ColorHelper.greyD1D3D3,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "неделя ${index + 1}",
+                    style: TextHelper.w700s15
+                        .copyWith(color: ColorHelper.black000000),
+                  ),
+                  isDone ? SizedBox() : Icon(Icons.check_sharp)
+                ],
               ),
             ),
           );
