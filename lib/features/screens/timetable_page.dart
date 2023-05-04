@@ -12,36 +12,56 @@ class TimeTableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          title: Image.asset(
-            "assets/images/BODYPOWER.png",
-            width: 136.w,
-          ),
-          backgroundColor: Colors.transparent,
-        ),
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   centerTitle: true,
+        //   title: Image.asset(
+        //     "assets/images/BODYPOWER.png",
+        //     width: 136.w,
+        //   ),
+        //   backgroundColor: Colors.transparent,
+        // ),
         backgroundColor: ColorHelper.backgroundColor,
-        body: SafeArea(
-          child: Padding(
+        body: NestedScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                expandedHeight: 200.0,
+                floating: false,
+                // pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  title: RichText(
+                    text: TextSpan(
+                      text: 'Программы ',
+                      style: TextHelper.w700s20
+                          .copyWith(color: ColorHelper.blue01DDEB),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'тренировок',
+                          style: TextStyle(color: ColorHelper.greyD1D3D3),
+                        ),
+                      ],
+                    ),
+                  ),
+                  background: Image.asset(
+                    "assets/images/splash.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ];
+          },
+          body: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Программы ',
-                    style: TextHelper.w700s20
-                        .copyWith(color: ColorHelper.blue01DDEB),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'тренировок',
-                          style: TextStyle(color: ColorHelper.greyD1D3D3)),
-                    ],
-                  ),
-                ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30.h),
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Text(
                     "Выберите Курс",
                     style: TextHelper.w700s18

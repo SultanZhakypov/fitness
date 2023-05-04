@@ -17,10 +17,10 @@ const double signInAlign = 1;
 class _AnimatedContainerWidgetState extends State<AnimatedContainerWidget> {
   late double width = MediaQuery.of(context).size.width;
   late double xAlign;
-  bool isSelected = true;
+  bool isSelected = false;
   @override
   void initState() {
-    xAlign = signInAlign;
+    xAlign = loginAlign;
     super.initState();
   }
 

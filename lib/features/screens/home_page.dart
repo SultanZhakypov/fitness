@@ -1,5 +1,4 @@
 import 'package:fitness/features/widgets/day_view_widget.dart';
-import 'package:fitness/features/widgets/week_view_widget.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,18 +50,7 @@ class HomePageScreen extends StatelessWidget {
               const MyCourseCard(),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 20.w,
-                  top: 40.h,
-                ),
-                child: Text(
-                  "НЕДЕЛЯ",
-                  style: TextHelper.w700s20
-                      .copyWith(color: ColorHelper.greyD1D3D3),
-                ),
-              ),
-              const WeekViewWidget(),
-              Padding(
-                padding: EdgeInsets.only(
+                  top: 20.h,
                   left: 20.w,
                   bottom: 31.h,
                 ),
