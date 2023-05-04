@@ -16,6 +16,8 @@ class BloggerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: EdgeInsets.zero,
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: false,
       itemBuilder: (context, index) {
         return Container(

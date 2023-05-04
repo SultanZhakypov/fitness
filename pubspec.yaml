@@ -37,15 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.7.0
   lottie: ^2.3.2
-  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_native_splash:
- color: "#ffffff"
- image: assets/images/splash_screen.png
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

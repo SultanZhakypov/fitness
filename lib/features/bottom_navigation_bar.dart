@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:fitness/features/screens/home_page.dart';
 import 'package:fitness/features/screens/news_page.dart';
 import 'package:fitness/features/screens/timetable_page.dart';
@@ -32,6 +30,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedTab,
           selectedItemColor: ColorHelper.blue01DDEB,

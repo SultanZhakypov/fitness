@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../bottom_navigation_bar.dart';
 
@@ -20,8 +21,10 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Image.asset(
-        "assets/images/splash_screen.png",
-        fit: BoxFit.cover,
+        "assets/images/no_pain.jpg",
+        height: 852.h,
+        width: 393.w,
+        fit: BoxFit.fill,
       ),
     );
   }
