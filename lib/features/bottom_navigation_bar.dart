@@ -30,7 +30,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedTab,
           selectedItemColor: ColorHelper.blue01DDEB,
