@@ -2,6 +2,8 @@ import 'package:fitness/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 

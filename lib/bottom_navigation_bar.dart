@@ -34,7 +34,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           currentIndex: _selectedTab,
           selectedItemColor: ColorHelper.blue01DDEB,
           unselectedItemColor: Colors.white,
-          backgroundColor: Color(0xff878383),
+          backgroundColor: const Color(0xff878383),
           onTap: onSelectTab,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "HOME"),
