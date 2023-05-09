@@ -1,6 +1,6 @@
-import 'package:fitness/features/screens/home_page.dart';
-import 'package:fitness/features/screens/news_page.dart';
-import 'package:fitness/features/screens/timetable_page.dart';
+import 'package:fitness/features/blogger/presentation/screens/home_page.dart';
+import 'package:fitness/features/blogger/presentation/screens/news_page.dart';
+import 'package:fitness/features/blogger/presentation/screens/timetable_page.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 
