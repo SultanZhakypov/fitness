@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:firebase_storage/firebase_storage.dart' as firebaseStorage;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fitness/features/blogger/data/controllers/blogger_controller.dart';
 import 'package:fitness/features/blogger/presentation/screens/course_information_screen.dart';
@@ -139,7 +138,7 @@ class _BloggerCardState extends State<BloggerCard> {
               );
             }
           } else {
-            return const CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           }
         });
   }
