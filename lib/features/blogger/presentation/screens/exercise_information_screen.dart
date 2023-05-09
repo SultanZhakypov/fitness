@@ -1,7 +1,7 @@
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/color_helper.dart';
 
 class ExerciseInformationScreen extends StatelessWidget {
   const ExerciseInformationScreen({super.key});

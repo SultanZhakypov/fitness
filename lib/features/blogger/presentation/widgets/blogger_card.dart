@@ -1,12 +1,13 @@
+
 import 'dart:math';
 
-import 'package:fitness/features/models/model.dart';
-import 'package:fitness/features/screens/course_information_screen.dart';
+import 'package:fitness/features/blogger/presentation/screens/course_information_screen.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/color_helper.dart';
+import '../../data/models/model.dart';
 
 class BloggerCard extends StatelessWidget {
   const BloggerCard({
