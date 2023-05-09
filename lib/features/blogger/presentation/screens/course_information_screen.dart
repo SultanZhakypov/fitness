@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/color_helper.dart';
 
 class CourseInformationScreen extends StatelessWidget {
   const CourseInformationScreen({super.key});

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fitness/features/models/model.dart';
+import 'package:fitness/features/blogger/data/models/model.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

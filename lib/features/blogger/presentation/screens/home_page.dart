@@ -1,9 +1,9 @@
-import 'package:fitness/features/widgets/day_view_widget.dart';
+import 'package:fitness/features/blogger/presentation/widgets/day_view_widget.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../internal/helpers/text_helper.dart';
+import '../../../../internal/helpers/text_helper.dart';
 import '../widgets/my_course_card.dart';
 import '../widgets/training_card_widget.dart';
 

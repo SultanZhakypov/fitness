@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/color_helper.dart';
 import '../screens/training_screen.dart';
 
 class RepititionSelectCard extends StatefulWidget {
