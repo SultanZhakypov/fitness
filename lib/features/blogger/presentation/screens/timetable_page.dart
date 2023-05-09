@@ -23,7 +23,7 @@ class TimeTableScreen extends StatelessWidget {
         ),
         backgroundColor: ColorHelper.backgroundColor,
         body: NestedScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          // physics: NeverScrollableScrollPhysics(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
