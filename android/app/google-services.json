@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "259839654419",
-    "project_id": "bodypower-1bdb2",
-    "storage_bucket": "bodypower-1bdb2.appspot.com"
+    "project_number": "963763719320",
+    "project_id": "body-power-eb242",
+    "storage_bucket": "body-power-eb242.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:259839654419:android:20e7c574f103ec1a289de6",
+        "mobilesdk_app_id": "1:963763719320:android:e8af565e50aa9ee52b94ed",
         "android_client_info": {
           "package_name": "com.example.fitness"
         }
       },
       "oauth_client": [
         {
-          "client_id": "259839654419-agenlu6pbclr04evrt9alce9ht0u3p7k.apps.googleusercontent.com",
+          "client_id": "963763719320-4i7h35lv64msl7hckha2kuchjp02m6o7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2d-qIUMtv1HHDBp74p6HbYbeL7XTNmjw"
+          "current_key": "AIzaSyD3Teu6QSOC3SjoDiHQz98G1A7khyBWROA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "259839654419-agenlu6pbclr04evrt9alce9ht0u3p7k.apps.googleusercontent.com",
+              "client_id": "963763719320-4i7h35lv64msl7hckha2kuchjp02m6o7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
