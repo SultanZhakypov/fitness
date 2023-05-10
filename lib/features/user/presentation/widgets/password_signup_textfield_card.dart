@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import '../../../../internal/helpers/color_helper.dart';
+
+class PasswordSignUpTextFieldCard extends StatefulWidget {
+  const PasswordSignUpTextFieldCard({
+    super.key,
+    required this.controller,
+  });
+  final TextEditingController controller;
+
+  @override
+  State<PasswordSignUpTextFieldCard> createState() =>
+      _PasswordSignUpTextFieldCardState();
+}
+
+class _PasswordSignUpTextFieldCardState
+    extends State<PasswordSignUpTextFieldCard> {
+  bool _obscureText = true;
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: widget.controller,
+      obscureText: _obscureText,
+      onChanged: (value) {
+        setState(() {
+          widget.controller.text.isEmpty != true;
+        });
+      },
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+            icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            }),
+        suffixIconColor: ColorHelper.greyD1D3D3,
+        filled: true,
+        fillColor: Colors.black.withOpacity(0.1),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(
+            width: 2,
+            color: ColorHelper.white10,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(
+            width: 2,
+            color: ColorHelper.blue01DDEB,
+          ),
+        ),
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Пожалуйста введите ваш пароль';
+        }
+        return null;
+      },
+    );
+  }
+}
