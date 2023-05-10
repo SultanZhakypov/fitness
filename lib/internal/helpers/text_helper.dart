@@ -29,4 +29,8 @@ class TextHelper {
     fontSize: 11,
     fontWeight: FontWeight.w700,
   );
+   static TextStyle w700s23 = TextStyle(
+    fontSize: 23,
+    fontWeight: FontWeight.w700,
+  );
 }

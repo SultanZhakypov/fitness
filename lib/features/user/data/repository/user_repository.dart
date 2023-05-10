@@ -31,4 +31,6 @@ class UserRepository extends GetxController {
     }
     ;
   }
+
+  
 }
