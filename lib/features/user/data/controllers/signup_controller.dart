@@ -1,3 +1,4 @@
+import 'package:fitness/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +6,6 @@ import '../../presentation/screens/otp_screen.dart';
 import '../models/user_model.dart';
 import '../repository/authentication_repository/authentication_repository.dart';
 import '../repository/user_repository.dart';
-
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
@@ -17,14 +17,15 @@ class SignUpController extends GetxController {
 
   final userRepo = Get.put(UserRepository());
 
-  void registerUser(String email, String password)async {
+  Future<void> loginUser(String email, String password) async {
     String? error = await AuthenticationRepository.instance
-        .createWithEmailAndPassword(email, password) as String?;
+        .loginWithEmailAndPassword(email, password) as String?;
     if (error != null) {
       Get.showSnackbar(GetSnackBar(
         message: error.toString(),
       ));
     }
+    // Get.to(() => BottomNavBar());
   }
 
   Future<void> createUser(UserModel user) async {

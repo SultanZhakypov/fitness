@@ -1,3 +1,4 @@
+import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../internal/helpers/color_helper.dart';
@@ -21,6 +22,7 @@ class _SignUpTextFieldCardState extends State<SignUpTextFieldCard> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
       keyboardType: widget.textInputType,
       controller: widget.controller,
       onChanged: (value) {
