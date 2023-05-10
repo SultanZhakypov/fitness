@@ -1,10 +1,8 @@
 import 'dart:math';
-
 import 'package:fitness/features/blogger/data/models/model.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../internal/helpers/color_helper.dart';
 
 class NewsPageScreen extends StatefulWidget {
@@ -41,31 +39,61 @@ class _NewsPageScreenState extends State<NewsPageScreen> {
             ),
             Expanded(
               child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 30.h),
                 itemBuilder: (context, index) {
-                  return Stack(
-                    alignment: Alignment.center,
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(20.r),
-                        height: 350.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(
-                              colors: [Colors.blueGrey, Colors.deepPurple]),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15.w, vertical: 10.h),
+                        child: Text(
+                          "news screen".toUpperCase(),
+                          style: TextHelper.w700s18
+                              .copyWith(color: ColorHelper.greyD1D3D3),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(22.r),
-                        height: 346.h,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "${organImages[Random().nextInt(organImages.length)]}"),
-                            fit: BoxFit.cover,
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Container(
+                            height: 350.h,
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: [Colors.blueGrey, Colors.deepPurple]),
+                            ),
                           ),
-                        ),
+                          Container(
+                            height: 348.h,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "${organImages[Random().nextInt(organImages.length)]}"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 25.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4,
+                                  color:
+                                      ColorHelper.blue01DDEB.withOpacity(0.8),
+                                )
+                              ],
+                              color: ColorHelper.blue01DDEB.withOpacity(0.7),
+                              borderRadius: BorderRadius.circular(2.r),
+                            ),
+                            child: Text(
+                              "Подробнее",
+                              style: TextHelper.w400s11,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   );
