@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/text_helper.dart';
 import '../../../user/presentation/widgets/back_leading_card.dart';
 
-class CourseInformationScreen extends StatelessWidget {
-  const CourseInformationScreen({super.key});
+class MuscleProgressScreen extends StatelessWidget {
+  const MuscleProgressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,12 @@ class CourseInformationScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: ColorHelper.backgroundColor,
-      body: const SafeArea(
+      body: SafeArea(
           child: Center(
-        child: Text("courses"),
+        child: Text(
+          'Прогресс мышечной массы',
+          style: TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
+        ),
       )),
     );
   }

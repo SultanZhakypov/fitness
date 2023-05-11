@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/bottom_navigation_bar.dart';
+import 'package:fitness/features/user/presentation/screens/login_screen.dart';
 import 'package:fitness/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,16 +9,10 @@ import '../../../../internal/helpers/text_helper.dart';
 import '../../data/controllers/signup_controller.dart';
 import '../widgets/password_signup_textfield_card.dart';
 import '../widgets/signup_textfield_card.dart';
-import 'forget_password_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  ForgetPasswordScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   final controller = Get.put(SignUpController());
 
   @override
@@ -37,6 +31,23 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+              child: Image.asset(
+                "assets/images/BODYPOWER.png",
+                width: 136.w,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 60.h, bottom: 15.h),
+              child: Center(
+                child: Text(
+                  'Забыли пароль?',
+                  style: TextHelper.w700s20
+                      .copyWith(color: ColorHelper.greyD1D3D3),
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
               child: Text(
@@ -49,37 +60,25 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: controller.email,
               error: 'е имя'.toLowerCase(),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-              child: Text(
-                'Пароль',
-                style:
-                    TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
-              ),
-            ),
-            PasswordSignUpTextFieldCard(
-              controller: controller.password,
-            ),
+            const Spacer(),
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => ForgetPasswordScreen());
+                    Get.to(() => const LoginScreen());
                   },
-                  child: Text("Забыли пароль?"),
-                )
+                  child: const Text("Войти"),
+                ),
               ],
             ),
-            const Spacer(),
             InkWell(
               onTap: () async {
                 // Get.replace(() => BottomNavBar());
-                // SignUpController.instance.loginUser(
-                //     controller.email.text.trim(),
-                    // controller.password.text.trim());
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => BottomNavBar()));
+                // Navigator.pushReplacement(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const BottomNavBar()));
               },
               child: Container(
                 width: 1.sw,
@@ -100,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 child: Text(
-                  'Вход',
+                  'Выслать новый пароль',
                   style: TextHelper.w700s20
                       .copyWith(color: ColorHelper.greyD1D3D3),
                 ),

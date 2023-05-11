@@ -1,4 +1,5 @@
 import 'package:fitness/features/blogger/presentation/widgets/day_view_widget.dart';
+import 'package:fitness/features/user/presentation/screens/profile_screen.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +15,7 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         elevation: 0,
         centerTitle: true,
         title: Image.asset(
@@ -22,7 +23,15 @@ class HomePageScreen extends StatelessWidget {
           width: 136.w,
         ),
         actions: [
-          Icon(Icons.settings),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()));
+            },
+          ),
           SizedBox(
             width: 15.w,
           )
@@ -48,7 +57,7 @@ class HomePageScreen extends StatelessWidget {
                       .copyWith(color: ColorHelper.greyD1D3D3),
                 ),
               ),
-              const MyCourseCard(),
+               MyCourseCard(),
               Padding(
                 padding: EdgeInsets.only(
                   top: 20.h,

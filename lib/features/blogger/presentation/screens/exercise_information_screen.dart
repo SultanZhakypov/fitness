@@ -2,6 +2,7 @@ import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
+import '../../../user/presentation/widgets/back_leading_card.dart';
 
 class ExerciseInformationScreen extends StatelessWidget {
   const ExerciseInformationScreen({super.key});
@@ -10,12 +11,7 @@ class ExerciseInformationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios),
-        ),
+        leading: const BackLeadingCard(),
         elevation: 0,
         centerTitle: true,
         title: Image.asset(

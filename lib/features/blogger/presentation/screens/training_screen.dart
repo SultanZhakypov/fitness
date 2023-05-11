@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:fitness/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:fitness/internal/helpers/color_helper.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
@@ -130,12 +131,7 @@ class _TrainingScreenState extends State<TrainingScreen> {
     );
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios),
-        ),
+        leading: BackLeadingCard(),
         elevation: 0,
         centerTitle: true,
         title: Image.asset(

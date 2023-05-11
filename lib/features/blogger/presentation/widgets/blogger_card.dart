@@ -20,7 +20,6 @@ class BloggerCard extends StatefulWidget {
 }
 
 class _BloggerCardState extends State<BloggerCard> {
-  late String imageUrl;
   final storage = FirebaseStorage.instance;
 
   // @override
