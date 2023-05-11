@@ -10,8 +10,8 @@ import '../widgets/back_leading_card.dart';
 import '../widgets/password_signup_textfield_card.dart';
 import '../widgets/signup_textfield_card.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,9 @@ class SignUpScreen extends StatelessWidget {
         leading: BackLeadingCard(),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
-          "Зарегистрироваться",
-          style: TextHelper.w700s23.copyWith(color: ColorHelper.whiteECECEC),
+        title: Image.asset(
+          "assets/images/BODYPOWER.png",
+          width: 136.w,
         ),
       ),
       backgroundColor: ColorHelper.backgroundColor,
@@ -78,29 +78,29 @@ class SignUpScreen extends StatelessWidget {
                     textInputType: TextInputType.phone,
                     error: ' Номер телефона'.toLowerCase(),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                    child: Text(
-                      'Пароль',
-                      style: TextHelper.w700s20
-                          .copyWith(color: ColorHelper.greyD1D3D3),
-                    ),
-                  ),
-                  PasswordSignUpTextFieldCard(
-                    controller: controller.password,
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                  //   child: Text(
+                  //     'Пароль',
+                  //     style: TextHelper.w700s20
+                  //         .copyWith(color: ColorHelper.greyD1D3D3),
+                  //   ),
+                  // ),
+                  // PasswordSignUpTextFieldCard(
+                  //   controller: controller.password,
+                  // ),
                   SizedBox(height: 40.h),
                   InkWell(
                     onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        final user = UserModel(
-                          nickName: controller.nickName.text.trim(),
-                          email: controller.email.text.trim(),
-                          phoneNumber: controller.phoneNumber.text.trim(),
-                          password: controller.password.text.trim(),
-                        );
-                        SignUpController.instance.createUser(user);
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                      //   final user = UserModel(
+                      //     nickName: controller.nickName.text.trim(),
+                      //     email: controller.email.text.trim(),
+                      //     phoneNumber: controller.phoneNumber.text.trim(),
+                      //     password: controller.password.text.trim(),
+                      //   );
+                      //   // SignUpController.instance.update();
+                      // }
                     },
                     child: Container(
                       width: 1.sw,
@@ -122,7 +122,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Зарегистрироваться',
+                        'Сохранить изменении',
                         style: TextHelper.w700s20
                             .copyWith(color: ColorHelper.greyD1D3D3),
                       ),
@@ -137,4 +137,3 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
-

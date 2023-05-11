@@ -32,7 +32,7 @@ class _SignUpTextFieldCardState extends State<SignUpTextFieldCard> {
       },
       decoration: InputDecoration(
         suffixIcon: widget.controller.text.isEmpty
-            ? const SizedBox()
+            ? const Icon(Icons.drive_file_rename_outline_outlined)
             : const Icon(Icons.check),
         suffixIconColor: ColorHelper.greyD1D3D3,
         filled: true,

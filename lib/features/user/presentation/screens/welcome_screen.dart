@@ -39,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         // Get.to(() => LoginScreen());
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => LoginScreen()));
