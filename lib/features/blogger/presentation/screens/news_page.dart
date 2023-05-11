@@ -16,7 +16,7 @@ class _NewsPageScreenState extends State<NewsPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(automaticallyImplyLeading: false,
           elevation: 0,
           centerTitle: true,
           title: Image.asset(

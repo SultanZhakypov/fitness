@@ -38,7 +38,11 @@ class WelcomeScreen extends StatelessWidget {
                         backgroundColor: ColorHelper.blue01DDEB,
                       ),
                       onPressed: () {
-                        Get.to(() => LoginScreen());
+                        // Get.to(() => LoginScreen());
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
                       },
                       child: Text("Вход"),
                     ),

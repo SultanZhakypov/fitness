@@ -1,7 +1,6 @@
 import 'package:fitness/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../internal/helpers/color_helper.dart';
 import '../widgets/animated_container_widget.dart';
 import '../widgets/tabbar_view_widget.dart';
@@ -13,6 +12,7 @@ class TimeTableScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           centerTitle: true,
           title: Image.asset(
@@ -27,6 +27,7 @@ class TimeTableScreen extends StatelessWidget {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 expandedHeight: 200.0,
