@@ -55,7 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 30.h),
               InkWell(
                 onTap: () async {
-                  Get.to(() => BottomNavBar());
+                  // Get.replace(() => BottomNavBar());
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => BottomNavBar()));
                 },
                 child: Container(
                   width: 1.sw,
