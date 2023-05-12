@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../widgets/animated_container_widget.dart';
-import '../widgets/tabbar_view_widget.dart';
+import '../widgets/gender_tabbar_view_widget.dart';
 
 class TimeTableScreen extends StatelessWidget {
   const TimeTableScreen({super.key});

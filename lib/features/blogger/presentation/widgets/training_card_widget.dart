@@ -21,10 +21,8 @@ class TrainingCardWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const TrainingScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TrainingScreen()));
           },
           child: Container(
             width: 353.w,

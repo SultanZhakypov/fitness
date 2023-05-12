@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:fitness/features/blogger/data/models/model.dart';
 import 'package:fitness/features/news_page/data/controllers/news_page_controller.dart';
 import 'package:fitness/features/news_page/screens/news_info_screen.dart';
 import 'package:fitness/internal/helpers/text_helper.dart';
