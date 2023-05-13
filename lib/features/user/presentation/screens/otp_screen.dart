@@ -1,5 +1,5 @@
-import 'package:fitness/features/user/presentation/widgets/back_leading_card.dart';
-import 'package:fitness/internal/helpers/color_helper.dart';
+import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
+import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

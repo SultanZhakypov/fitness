@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness/bottom_navigation_bar.dart';
-import 'package:fitness/features/user/presentation/widgets/back_leading_card.dart';
+import 'package:BodyPower/bottom_navigation_bar.dart';
+import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Get.replace(() => BottomNavBar());
                 // SignUpController.instance.loginUser(
                 //     controller.email.text.trim(),
-                    // controller.password.text.trim());
+                // controller.password.text.trim());
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => BottomNavBar()));
               },

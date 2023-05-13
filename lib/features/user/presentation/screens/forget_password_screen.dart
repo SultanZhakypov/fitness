@@ -1,6 +1,6 @@
-import 'package:fitness/bottom_navigation_bar.dart';
-import 'package:fitness/features/user/presentation/screens/login_screen.dart';
-import 'package:fitness/features/user/presentation/widgets/back_leading_card.dart';
+import 'package:BodyPower/bottom_navigation_bar.dart';
+import 'package:BodyPower/features/user/presentation/screens/login_screen.dart';
+import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

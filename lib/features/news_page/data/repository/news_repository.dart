@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fitness/features/news_page/data/models/news_page_models.dart';
+import 'package:BodyPower/features/news_page/data/models/news_page_models.dart';
 import 'package:get/get.dart';
 
 class NewsRepository extends GetxController {

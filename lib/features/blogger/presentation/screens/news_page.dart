@@ -1,9 +1,8 @@
 import 'dart:math';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:fitness/features/blogger/data/models/model.dart';
-import 'package:fitness/features/news_page/data/controllers/news_page_controller.dart';
-import 'package:fitness/features/news_page/screens/news_info_screen.dart';
-import 'package:fitness/internal/helpers/text_helper.dart';
+import 'package:BodyPower/features/news_page/data/controllers/news_page_controller.dart';
+import 'package:BodyPower/features/news_page/screens/news_info_screen.dart';
+import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -22,7 +21,8 @@ class _NewsPageScreenState extends State<NewsPageScreen> {
   Widget build(BuildContext context) {
     final controller = Get.put(NewsPageController());
     return Scaffold(
-        appBar: AppBar(automaticallyImplyLeading: false,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           centerTitle: true,
           title: Image.asset(

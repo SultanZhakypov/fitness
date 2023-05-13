@@ -1,43 +1,24 @@
 import 'dart:math';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:fitness/features/blogger/data/controllers/blogger_controller.dart';
-import 'package:fitness/features/blogger/presentation/screens/course_information_screen.dart';
-import 'package:fitness/internal/helpers/text_helper.dart';
+import 'package:BodyPower/features/blogger/data/controllers/blogger_controller.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/course_information_screen.dart';
+import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../../../internal/helpers/color_helper.dart';
 
-class BloggerCard extends StatefulWidget {
-  const BloggerCard({
+class BloggerCard extends StatelessWidget {
+  BloggerCard({
     super.key,
   });
 
-  @override
-  State<BloggerCard> createState() => _BloggerCardState();
-}
-
-class _BloggerCardState extends State<BloggerCard> {
   final storage = FirebaseStorage.instance;
 
   // @override
-  // void initState() {
-  //   super.initState();
-
-  //   imageUrl = "";
-  //   getImageUrl();
-  // }
-
-  // Future<void> getImageUrl() async {
-  //   final ref = storage.ref().child(("image1.jpg"));
-  //   final url = await ref.getDownloadURL();
-  //   setState(() {
-  //     imageUrl = url;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BloggerController());
@@ -48,7 +29,7 @@ class _BloggerCardState extends State<BloggerCard> {
             if (snapshot.hasData) {
               return ListView.separated(
                 padding: EdgeInsets.zero,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: false,
                 itemBuilder: (context, index) {
                   return Container(

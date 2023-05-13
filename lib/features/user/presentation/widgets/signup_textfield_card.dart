@@ -1,4 +1,4 @@
-import 'package:fitness/internal/helpers/text_helper.dart';
+import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../internal/helpers/color_helper.dart';

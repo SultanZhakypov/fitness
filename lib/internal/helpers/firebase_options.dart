@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '963763719320',
     projectId: 'body-power-eb242',
     storageBucket: 'body-power-eb242.appspot.com',
-    iosClientId: '963763719320-oa7moqc0ishtrjt6nu18o1j2f43u5u99.apps.googleusercontent.com',
+    iosClientId:
+        '963763719320-oa7moqc0ishtrjt6nu18o1j2f43u5u99.apps.googleusercontent.com',
     iosBundleId: 'com.example.fitness',
   );
 }
