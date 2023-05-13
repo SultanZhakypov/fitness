@@ -90,7 +90,7 @@ class BloggerCard extends StatelessWidget {
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return CourseInformationScreen();
+                                  return const CourseInformationScreen();
                                 }));
                               },
                               icon: Icon(
