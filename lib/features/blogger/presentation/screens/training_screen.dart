@@ -54,7 +54,7 @@ class TrainingScreen extends StatelessWidget {
               ),
               const Expanded(
                 child: TabBarView(
-                  children: <Widget>[
+                  children: [
                     ExcersiceTabbarView(),
                     ExcersiceTabbarView(),
                     ExcersiceTabbarView()
