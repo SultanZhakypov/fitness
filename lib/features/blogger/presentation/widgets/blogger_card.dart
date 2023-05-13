@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:fitness/features/blogger/data/controllers/blogger_controller.dart';
-import 'package:fitness/features/blogger/presentation/screens/course_information_screen.dart';
-import 'package:fitness/internal/helpers/text_helper.dart';
+import 'package:BodyPower/features/blogger/data/controllers/blogger_controller.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/course_information_screen.dart';
+import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -1,6 +1,6 @@
-import 'package:fitness/features/blogger/presentation/widgets/day_view_widget.dart';
-import 'package:fitness/features/user/presentation/screens/profile_screen.dart';
-import 'package:fitness/internal/helpers/color_helper.dart';
+import 'package:BodyPower/features/blogger/presentation/widgets/day_view_widget.dart';
+import 'package:BodyPower/features/user/presentation/screens/profile_screen.dart';
+import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -57,7 +57,7 @@ class HomePageScreen extends StatelessWidget {
                       .copyWith(color: ColorHelper.greyD1D3D3),
                 ),
               ),
-               MyCourseCard(),
+              MyCourseCard(),
               Padding(
                 padding: EdgeInsets.only(
                   top: 20.h,

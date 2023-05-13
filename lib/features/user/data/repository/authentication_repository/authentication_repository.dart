@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness/bottom_navigation_bar.dart';
+import 'package:BodyPower/bottom_navigation_bar.dart';
 import 'package:get/get.dart';
 
 import '../../../presentation/screens/welcome_screen.dart';

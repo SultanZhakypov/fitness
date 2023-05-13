@@ -1,4 +1,4 @@
-import 'package:fitness/bottom_navigation_bar.dart';
+import 'package:BodyPower/bottom_navigation_bar.dart';
 import 'package:get/get.dart';
 
 import '../repository/authentication_repository/authentication_repository.dart';

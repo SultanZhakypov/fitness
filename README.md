@@ -1,4 +1,4 @@
-# fitness
+# BodyPower
 
 A new Flutter project.
 

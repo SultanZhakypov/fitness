@@ -1,7 +1,7 @@
-import 'package:fitness/features/blogger/presentation/screens/home_page.dart';
-import 'package:fitness/features/blogger/presentation/screens/news_page.dart';
-import 'package:fitness/features/blogger/presentation/screens/timetable_page.dart';
-import 'package:fitness/internal/helpers/color_helper.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/home_page.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/news_page.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/timetable_page.dart';
+import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {

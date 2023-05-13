@@ -1,5 +1,5 @@
-// import 'package:fitness/features/blogger/presentation/widgets/repitition_select_card.dart';
-// import 'package:fitness/features/blogger/presentation/widgets/weight_select_card.dart';
+// import 'package:BodyPower/features/blogger/presentation/widgets/repitition_select_card.dart';
+// import 'package:BodyPower/features/blogger/presentation/widgets/weight_select_card.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';

@@ -1,6 +1,6 @@
-import 'package:fitness/features/blogger/data/models/model.dart';
-import 'package:fitness/internal/helpers/color_helper.dart';
-import 'package:fitness/internal/helpers/text_helper.dart';
+import 'package:BodyPower/features/blogger/data/models/model.dart';
+import 'package:BodyPower/internal/helpers/color_helper.dart';
+import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
