@@ -42,8 +42,8 @@ class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView> {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: ListView(
         children: [
-          TrainingGiftCard(),
-          InformationButtonCard(),
+          const TrainingGiftCard(),
+          const InformationButtonCard(),
           Flexible(
             // flex: 1,
             // height: 2.sw,

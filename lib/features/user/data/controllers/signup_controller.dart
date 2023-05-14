@@ -1,4 +1,5 @@
 import 'package:BodyPower/bottom_navigation_bar.dart';
+import 'package:BodyPower/features/user/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -36,5 +37,13 @@ class SignUpController extends GetxController {
 
   void phoneAuntification(String phoneNumber) {
     AuthenticationRepository.instance.phoneAuthentication(phoneNumber);
+  }
+
+  void logOut() {
+    AuthenticationRepository.instance.logout();
+
+    runApp(new MaterialApp(
+      home: new LoginScreen(),
+    ));
   }
 }

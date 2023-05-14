@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
     final controller = Get.put(SignUpController());
     return Scaffold(
       appBar: AppBar(
-        leading: BackLeadingCard(),
+        leading: const BackLeadingCard(),
         elevation: 0,
         centerTitle: true,
         title: Image.asset(
@@ -33,42 +33,89 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              controller.nickName.text,
-              style:
-                  TextHelper.w700s18.copyWith(color: ColorHelper.whiteECECEC),
+            Row(
+              children: [
+                Text(
+                  "Nick name",
+                  style: TextHelper.w700s16
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+                Text(
+                  controller.nickName.text,
+                  style: TextHelper.w700s18
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+              ],
             ),
             SizedBox(
               height: 30.h,
             ),
-            Text(
-              controller.email.text,
-              style:
-                  TextHelper.w700s18.copyWith(color: ColorHelper.whiteECECEC),
+            Row(
+              children: [
+                Text(
+                  "Email",
+                  style: TextHelper.w700s16
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+                Text(
+                  controller.email.text,
+                  style: TextHelper.w700s18
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+              ],
             ),
             SizedBox(
               height: 30.h,
             ),
-            Text(
-              controller.phoneNumber.text,
-              style:
-                  TextHelper.w700s18.copyWith(color: ColorHelper.whiteECECEC),
+            Row(
+              children: [
+                Text(
+                  "Phone number",
+                  style: TextHelper.w700s16
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+                Text(
+                  controller.phoneNumber.text,
+                  style: TextHelper.w700s18
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+              ],
             ),
             SizedBox(
               height: 30.h,
             ),
-            Text(
-              "training days",
-              style:
-                  TextHelper.w700s18.copyWith(color: ColorHelper.whiteECECEC),
+            Row(
+              children: [
+                Text(
+                  "training days",
+                  style: TextHelper.w700s16
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+                Spacer(),
+                Text(
+                  "1,2,3",
+                  style: TextHelper.w700s18
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+              ],
             ),
             SizedBox(
               height: 30.h,
             ),
-            Text(
-              "time of trainging",
-              style:
-                  TextHelper.w700s18.copyWith(color: ColorHelper.whiteECECEC),
+            Row(
+              children: [
+                Text(
+                  "time of trainging",
+                  style: TextHelper.w700s16
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+                Spacer(),
+                Text(
+                  "22:00",
+                  style: TextHelper.w700s18
+                      .copyWith(color: ColorHelper.whiteECECEC),
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 30.h),
@@ -78,7 +125,8 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MuscleProgressScreen()));
+                            builder: (context) =>
+                                const MuscleProgressScreen()));
                   },
                   child: Container(
                     width: 0.8.sw,
@@ -113,7 +161,7 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EditProfileScreen()));
+                          builder: (context) => const EditProfileScreen()));
                 },
                 child: Container(
                   width: 0.8.sw,
@@ -141,6 +189,36 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorHelper.greyD1D3D3,
+                  ),
+                  onPressed: () {
+                    SignUpController.instance.logOut();
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        color: ColorHelper.blue01DDEB,
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Text(
+                        "Log Out",
+                        style: TextHelper.w700s20
+                            .copyWith(color: ColorHelper.blue01DDEB),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )
           ],
         ),
       )),

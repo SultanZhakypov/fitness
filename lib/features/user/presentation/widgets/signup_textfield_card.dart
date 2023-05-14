@@ -36,7 +36,7 @@ class _SignUpTextFieldCardState extends State<SignUpTextFieldCard> {
             : const Icon(Icons.check),
         suffixIconColor: ColorHelper.greyD1D3D3,
         filled: true,
-        fillColor: Colors.black.withOpacity(0.1),
+        fillColor: ColorHelper.black38,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(
