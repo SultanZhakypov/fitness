@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../internal/helpers/color_helper.dart';
+import '../../../../internal/helpers/text_helper.dart';
 import '../screens/training_screen.dart';
 
 class RepititionSelectCard extends StatefulWidget {
@@ -15,12 +15,11 @@ class RepititionSelectCard extends StatefulWidget {
 }
 
 class _RepititionSelectCardState extends State<RepititionSelectCard> {
-   String repeatValue = repetitionList.first;
+  String repeatValue = repetitionList.first;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100.w,
-      height: 50.h,
       child: DropdownButtonFormField(
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
@@ -52,8 +51,11 @@ class _RepititionSelectCardState extends State<RepititionSelectCard> {
               borderRadius: BorderRadius.circular(4),
             ),
           ),
-          items: repetitionList
-              .map<DropdownMenuItem<String>>((String value) {
+          iconEnabledColor: ColorHelper.greyD1D3D3,
+          dropdownColor: ColorHelper.backgroundColor.withOpacity(0.9),
+          style: TextHelper.w700s15.copyWith(color: ColorHelper.blue01DDEB),
+          focusColor: ColorHelper.blue01DDEB,
+          items: repetitionList.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),

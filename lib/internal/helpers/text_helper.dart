@@ -41,4 +41,8 @@ class TextHelper {
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
+  static TextStyle w700s30 = const TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w700,
+  );
 }

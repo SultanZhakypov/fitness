@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:BodyPower/features/blogger/presentation/widgets/repitition_select_card.dart';
 import 'package:BodyPower/features/blogger/presentation/widgets/training_gift_card.dart';
 import 'package:BodyPower/features/blogger/presentation/widgets/weight_select_card.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,20 +21,62 @@ class ExcersiceTabbarView extends StatefulWidget {
   State<ExcersiceTabbarView> createState() => _ExcersiceTabbarViewState();
 }
 
-class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView> {
-  double initial = 0.0;
+class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView>
+    with TickerProviderStateMixin {
+  AnimationController? _progressController;
+  Timer? _timer;
+  bool _isPlaying = false;
+  int _timerSeconds = 0;
+  AudioPlayer? _audioPlayer;
 
   @override
-  void initState() {
+  void initState() async {
     super.initState();
+    _progressController =
+        AnimationController(vsync: this, duration: Duration(seconds: 30));
+    _progressController!.addListener(() {
+      setState(() {});
+    });
+    _audioPlayer = AudioPlayer();
+    // await _audioPlayer!.play(ctx: );/
   }
 
-  update() {
-    Timer.periodic(const Duration(milliseconds: 100), (timer) {
+  @override
+  void dispose() {
+    _progressController!.dispose();
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timerSeconds = 0;
+    _timer?.cancel();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        initial = initial + 0.01;
+        _timerSeconds++;
+        if (_timerSeconds >= 30) {
+          _timer!.cancel();
+          _timer = null;
+          _isPlaying = false;
+        }
       });
     });
+  }
+
+  void _playProgress() {
+    if (!_isPlaying) {
+      _isPlaying = true;
+      _startTimer();
+      _progressController!.forward();
+    }
+  }
+
+  void _stopProgress() {
+    if (_isPlaying) {
+      _isPlaying = false;
+      _timer?.cancel();
+      _progressController!.stop();
+    }
   }
 
   @override
@@ -56,6 +99,7 @@ class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView> {
                 return Column(
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
@@ -97,30 +141,46 @@ class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView> {
                             const RepititionSelectCard()
                           ],
                         ),
-                        Container(
-                          height: 40.r,
-                          width: 40.r,
-                          decoration: BoxDecoration(
+                        InkWell(
+                          onTap: _playProgress,
+                          child: Container(
+                            height: 65.r,
+                            width: 60.r,
+                            decoration: BoxDecoration(
                               color: Colors.grey,
-                              borderRadius: BorderRadius.circular(4.r)),
+                              borderRadius: BorderRadius.circular(4.r),
+                            ),
+                            child: const Icon(
+                              Icons.play_arrow_rounded,
+                              size: 50,
+                            ),
+                          ),
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "секунд:  ",
+                          style: TextHelper.w400s16
+                              .copyWith(color: ColorHelper.whiteECECEC),
+                        ),
+                        Text(
+                          "$_timerSeconds",
+                          style: TextHelper.w700s30
+                              .copyWith(color: ColorHelper.whiteECECEC),
+                        ),
+                      ],
                     ),
-                    LinearProgressIndicator(
-                      value: initial,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        update();
-                      },
-                      icon: const Icon(
-                        Icons.mark_as_unread_rounded,
-                        size: 40,
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.h),
+                      child: LinearProgressIndicator(
+                        value: _progressController!.value,
                       ),
-                    )
+                    ),
                   ],
                 );
               },

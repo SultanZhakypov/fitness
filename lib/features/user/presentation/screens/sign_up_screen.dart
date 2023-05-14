@@ -2,12 +2,9 @@ import 'package:BodyPower/features/user/presentation/widgets/login_helper_cards.
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../data/controllers/signup_controller.dart';
-import '../../data/models/user_model.dart';
 import '../widgets/back_leading_card.dart';
 import '../widgets/password_signup_textfield_card.dart';
 import '../widgets/signup_button_card.dart';
