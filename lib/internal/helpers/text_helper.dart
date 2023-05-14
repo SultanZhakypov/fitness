@@ -25,12 +25,20 @@ class TextHelper {
     fontSize: 11,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle w400s16 = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle w700s11 = const TextStyle(
     fontSize: 11,
     fontWeight: FontWeight.w700,
   );
-   static TextStyle w700s23 = const TextStyle(
+  static TextStyle w700s23 = const TextStyle(
     fontSize: 23,
     fontWeight: FontWeight.w700,
+  );
+  static TextStyle w400s16bold = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
   );
 }

@@ -9,4 +9,6 @@ class ColorHelper {
   static Color black000000 = Color(0xff000000);
   static Color whiteECECEC = Color(0xffECECEC);
   static Color white10 = Colors.white10;
+  static Color blackwithopacity01 = Colors.black.withOpacity(0.1);
+  static Color black38 = Colors.black38;
 }

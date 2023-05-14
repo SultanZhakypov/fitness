@@ -1,6 +1,8 @@
+import 'package:BodyPower/features/user/presentation/widgets/login_helper_cards.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +10,7 @@ import '../../data/controllers/signup_controller.dart';
 import '../../data/models/user_model.dart';
 import '../widgets/back_leading_card.dart';
 import '../widgets/password_signup_textfield_card.dart';
+import '../widgets/signup_button_card.dart';
 import '../widgets/signup_textfield_card.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -22,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: BackLeadingCard(),
+        leading: const BackLeadingCard(),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
@@ -36,10 +39,19 @@ class SignUpScreen extends StatelessWidget {
           key: _formKey,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(20.r),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  Text(
+                    "Зарегистрируйтесь одним из следующих вариантов",
+                    style: TextHelper.w700s15
+                        .copyWith(color: ColorHelper.greyD1D3D3),
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  const LoginHelperCards(),
                   Padding(
                     padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
                     child: Text(
@@ -89,45 +101,27 @@ class SignUpScreen extends StatelessWidget {
                   PasswordSignUpTextFieldCard(
                     controller: controller.password,
                   ),
-                  SizedBox(height: 40.h),
-                  InkWell(
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        final user = UserModel(
-                          nickName: controller.nickName.text.trim(),
-                          email: controller.email.text.trim(),
-                          phoneNumber: controller.phoneNumber.text.trim(),
-                          password: controller.password.text.trim(),
-                        );
-                        SignUpController.instance.createUser(user);
-                      }
-                    },
-                    child: Container(
-                      width: 1.sw,
-                      height: 60.h,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.purple.shade900, blurRadius: 6)
-                        ],
-                        borderRadius: BorderRadius.circular(15),
-                        gradient: LinearGradient(
-                          colors: [
-                            ColorHelper.blue01DDEB,
-                            Colors.blue,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: Text(
-                        'Зарегистрироваться',
-                        style: TextHelper.w700s20
+                  Padding(
+                    padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
+                    child: SignUpButtonCard(
+                        formKey: _formKey, controller: controller),
+                  ),
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'У вас уже есть аккаунт? ',
+                        style: TextHelper.w400s16
                             .copyWith(color: ColorHelper.greyD1D3D3),
+                        children: [
+                          TextSpan(
+                            text: 'Вход',
+                            style: TextHelper.w400s16bold
+                                .copyWith(color: ColorHelper.whiteECECEC),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
