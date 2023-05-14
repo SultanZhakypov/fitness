@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +10,6 @@ class WeightSelectCard extends StatefulWidget {
     super.key,
   });
 
-
   @override
   State<WeightSelectCard> createState() => _WeightSelectCardState();
 }
@@ -22,7 +19,6 @@ class _WeightSelectCardState extends State<WeightSelectCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
       width: 90.w,
       child: DropdownButtonFormField(
           borderRadius: BorderRadius.circular(4.r),
@@ -57,15 +53,11 @@ class _WeightSelectCardState extends State<WeightSelectCard> {
               borderRadius: BorderRadius.circular(4),
             ),
           ),
-          iconDisabledColor: Colors.red,
           iconEnabledColor: ColorHelper.greyD1D3D3,
-          dropdownColor:
-              ColorHelper.backgroundColor.withOpacity(0.9),
-          style: TextHelper.w700s15
-              .copyWith(color: ColorHelper.blue01DDEB),
+          dropdownColor: ColorHelper.backgroundColor.withOpacity(0.9),
+          style: TextHelper.w700s15.copyWith(color: ColorHelper.blue01DDEB),
           focusColor: ColorHelper.blue01DDEB,
-          items: weightList
-              .map<DropdownMenuItem<String>>((String value) {
+          items: weightList.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),

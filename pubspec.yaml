@@ -47,6 +47,7 @@ dependencies:
   firebase_storage: ^11.1.2
   smooth_page_indicator: ^1.1.0
   flutter_native_splash: ^2.2.19
+  audioplayers: ^4.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -91,6 +92,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
