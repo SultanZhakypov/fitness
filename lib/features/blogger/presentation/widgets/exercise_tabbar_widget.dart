@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:BodyPower/features/blogger/presentation/widgets/repitition_select_card.dart';
 import 'package:BodyPower/features/blogger/presentation/widgets/training_gift_card.dart';
 import 'package:BodyPower/features/blogger/presentation/widgets/weight_select_card.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../internal/helpers/color_helper.dart';
 import '../../../../internal/helpers/text_helper.dart';
 import 'approach_card.dart';
@@ -27,17 +25,17 @@ class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView>
   Timer? _timer;
   bool _isPlaying = false;
   int _timerSeconds = 0;
-  AudioPlayer? _audioPlayer;
+  // AudioPlayer? _audioPlayer;
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     _progressController =
         AnimationController(vsync: this, duration: Duration(seconds: 30));
     _progressController!.addListener(() {
       setState(() {});
     });
-    _audioPlayer = AudioPlayer();
+    // _audioPlayer = AudioPlayer();
     // await _audioPlayer!.play(ctx: );/
   }
 
@@ -81,113 +79,112 @@ class _ExcersiceTabbarViewState extends State<ExcersiceTabbarView>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: ListView(
-        children: [
-          const TrainingGiftCard(),
-          const InformationButtonCard(),
-          Flexible(
-            // flex: 1,
-            // height: 2.sw,
-            child: ListView.builder(
-              itemCount: 5,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (_, index) {
-                return Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              "N подхода",
-                              style: TextHelper.w700s15
-                                  .copyWith(color: ColorHelper.greyD1D3D3),
-                            ),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            const ApproachCard()
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Вес",
-                              style: TextHelper.w700s15
-                                  .copyWith(color: ColorHelper.greyD1D3D3),
-                            ),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            const WeightSelectCard()
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Повторение",
-                              style: TextHelper.w700s15
-                                  .copyWith(color: ColorHelper.greyD1D3D3),
-                            ),
-                            SizedBox(
-                              height: 30.h,
-                            ),
-                            const RepititionSelectCard()
-                          ],
-                        ),
-                        InkWell(
-                          onTap: _playProgress,
-                          child: Container(
-                            height: 65.r,
-                            width: 60.r,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(4.r),
-                            ),
-                            child: const Icon(
-                              Icons.play_arrow_rounded,
-                              size: 50,
-                            ),
+    return ListView(
+      padding: EdgeInsets.symmetric(horizontal: 2.w),
+      children: [
+        const TrainingGiftCard(),
+        const InformationButtonCard(),
+        Flexible(
+          // flex: 1,
+          // height: 2.sw,
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            itemCount: 5,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (_, index) {
+              return Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "N подхода",
+                            style: TextHelper.w700s15
+                                .copyWith(color: ColorHelper.greyD1D3D3),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "секунд:  ",
-                          style: TextHelper.w400s16
-                              .copyWith(color: ColorHelper.whiteECECEC),
-                        ),
-                        Text(
-                          "$_timerSeconds",
-                          style: TextHelper.w700s30
-                              .copyWith(color: ColorHelper.whiteECECEC),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20.h),
-                      child: LinearProgressIndicator(
-                        value: _progressController!.value,
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const ApproachCard()
+                        ],
                       ),
+                      Column(
+                        children: [
+                          Text(
+                            "Вес",
+                            style: TextHelper.w700s15
+                                .copyWith(color: ColorHelper.greyD1D3D3),
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const WeightSelectCard()
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "Повторение",
+                            style: TextHelper.w700s15
+                                .copyWith(color: ColorHelper.greyD1D3D3),
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          const RepititionSelectCard()
+                        ],
+                      ),
+                      InkWell(
+                        onTap: _playProgress,
+                        child: Container(
+                          height: 65.r,
+                          width: 60.r,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(4.r),
+                          ),
+                          child: const Icon(
+                            Icons.play_arrow_rounded,
+                            size: 50,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "секунд:  ",
+                        style: TextHelper.w400s16
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      ),
+                      Text(
+                        "$_timerSeconds",
+                        style: TextHelper.w700s30
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20.h),
+                    child: LinearProgressIndicator(
+                      value: _progressController!.value,
                     ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

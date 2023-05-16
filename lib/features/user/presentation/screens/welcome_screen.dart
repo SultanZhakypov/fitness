@@ -22,7 +22,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   void initialization() async {
-    print('ready in 3...');
     await Future.delayed(const Duration(seconds: 1));
     print('ready in 2...');
     await Future.delayed(const Duration(seconds: 1));

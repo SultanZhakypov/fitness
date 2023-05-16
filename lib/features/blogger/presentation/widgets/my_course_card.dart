@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:BodyPower/features/blogger/data/controllers/blogger_controller.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';

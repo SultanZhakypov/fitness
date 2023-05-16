@@ -8,7 +8,9 @@ class TrainingGiftCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.network(
-        "https://assets6.lottiefiles.com/packages/lf20_Y53BlMV4Q3.json");
+    return Lottie.asset(
+      "assets/images/lottie_777.json",
+      fit: BoxFit.cover,
+    );
   }
 }
