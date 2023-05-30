@@ -1,12 +1,26 @@
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
+import '../logic/bloc/blogger_bloc.dart';
 import '../widgets/animated_container_widget.dart';
 import '../widgets/gender_tabbar_view_widget.dart';
 
-class TimeTableScreen extends StatelessWidget {
+class TimeTableScreen extends StatefulWidget {
   const TimeTableScreen({super.key});
+
+  @override
+  State<TimeTableScreen> createState() => _TimeTableScreenState();
+}
+
+class _TimeTableScreenState extends State<TimeTableScreen> {
+  BloggerBloc bloc = BloggerBloc();
+  @override
+  void initState() {
+    bloc.add(GetBloggersEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,23 +70,39 @@ class TimeTableScreen extends StatelessWidget {
               ),
             ];
           },
-          body: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Padding(
-                //   padding: EdgeInsets.symmetric(vertical: 20.h),
-                //   child: Text(
-                //     "Выберите Курс",
-                //     style: TextHelper.w700s18
-                //         .copyWith(color: ColorHelper.greyD1D3D3),
-                //   ),
-                // ),
-                const AnimatedContainerWidget(),
-                const TabbarViewWidget(),
-              ],
-            ),
+          body: BlocConsumer<BloggerBloc, BloggerState>(
+            bloc: bloc,
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is LoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                );
+              }
+              if (state is FetchedBloggersState) {
+                return Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(vertical: 20.h),
+                      //   child: Text(
+                      //     "Выберите Курс",
+                      //     style: TextHelper.w700s18
+                      //         .copyWith(color: ColorHelper.greyD1D3D3),
+                      //   ),
+                      // ),
+                      const AnimatedContainerWidget(),
+                      TabbarViewWidget(
+                        bloggers: state.bloggers,
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return const SizedBox();
+            },
           ),
         ));
   }

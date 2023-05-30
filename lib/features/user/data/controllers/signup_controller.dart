@@ -1,49 +1,37 @@
-import 'package:BodyPower/bottom_navigation_bar.dart';
-import 'package:BodyPower/features/user/presentation/screens/login_screen.dart';
+import 'package:BodyPower/features/user/domain/use_case/user_use_case.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../presentation/screens/otp_screen.dart';
+import '../../domain/use_case/authentification_use_case.dart';
 import '../models/user_model.dart';
-import '../repository/authentication_repository/authentication_repository.dart';
-import '../repository/user_repository.dart';
 
-class SignUpController extends GetxController {
-  static SignUpController get instance => Get.find();
-
+class SignUpController {
   final email = TextEditingController();
   final password = TextEditingController();
   final nickName = TextEditingController();
   final phoneNumber = TextEditingController();
+  // UserRepository userRepo = UserRepository();
 
-  final userRepo = Get.put(UserRepository());
-
-  Future<void> loginUser(String email, String password) async {
-    String? error = await AuthenticationRepository.instance
-        .loginWithEmailAndPassword(email, password) as String?;
-    if (error != null) {
-      Get.showSnackbar(GetSnackBar(
-        message: error.toString(),
-      ));
-    }
-    // Get.to(() => BottomNavBar());
-  }
+  // Future<void> loginUser(String email, String password) async {
+  //   String? error =
+  //       await AuthentificationUseCase().sigIn(email, password) as String?;
+  //   if (error != null) {
+  //     Get.showSnackbar(GetSnackBar(
+  //       message: error.toString(),
+  //     ));
+  //   }
+  //   Get.to(() => BottomNavBar());
+  // }
 
   Future<void> createUser(UserModel user) async {
-    await userRepo.createUser(user);
+    await UserUseCase().createUser(user);
     phoneAuntification(user.phoneNumber);
-    Get.to(() => const OTPScreen());
+    // Get.to(() => const OTPScreen());
   }
 
   void phoneAuntification(String phoneNumber) {
-    AuthenticationRepository.instance.phoneAuthentication(phoneNumber);
+    AuthentificationUseCase().phoneAuthentication(phoneNumber);
   }
 
-  void logOut() {
-    AuthenticationRepository.instance.logout();
-
-    runApp(new MaterialApp(
-      home: new LoginScreen(),
-    ));
-  }
+  // void signOut() async {
+  //   await AuthentificationUseCase().signOut();
+  // }
 }

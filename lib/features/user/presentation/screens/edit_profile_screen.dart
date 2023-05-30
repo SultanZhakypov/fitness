@@ -2,27 +2,25 @@ import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import '../../data/controllers/signup_controller.dart';
-import '../../data/models/user_model.dart';
 import '../widgets/back_leading_card.dart';
-import '../widgets/password_signup_textfield_card.dart';
 import '../widgets/signup_textfield_card.dart';
 
 class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+  EditProfileScreen({super.key});
+  final nickNameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
     // ignore: no_leading_underscores_for_local_identifiers
     final _formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: BackLeadingCard(),
+        leading: const BackLeadingCard(),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Image.asset(
@@ -49,7 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SignUpTextFieldCard(
-                    controller: controller.nickName,
+                    controller: nickNameController,
                     error: 'е имя'.toLowerCase(),
                   ),
                   Padding(
@@ -61,7 +59,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SignUpTextFieldCard(
-                    controller: controller.email,
+                    controller: emailController,
                     textInputType: TextInputType.emailAddress,
                     error: ' Email'.toLowerCase(),
                   ),
@@ -74,7 +72,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SignUpTextFieldCard(
-                    controller: controller.phoneNumber,
+                    controller: phoneNumberController,
                     textInputType: TextInputType.phone,
                     error: ' Номер телефона'.toLowerCase(),
                   ),

@@ -1,0 +1,28 @@
+part of 'user_bloc.dart';
+
+abstract class UserState {}
+
+class UserInitial extends UserState {}
+
+class LoadingState extends UserState {}
+
+class LogInState extends UserState {
+  final String email;
+  final String password;
+
+  LogInState(this.email, this.password);
+}
+
+class FetchedUserState extends UserState {
+  final UserModel user;
+
+  FetchedUserState(this.user);
+}
+
+class CreatedUserState extends UserState {}
+
+class ErrorState extends UserState {
+  final String error;
+
+  ErrorState(this.error);
+}

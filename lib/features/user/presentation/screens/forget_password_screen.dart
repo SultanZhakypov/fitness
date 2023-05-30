@@ -1,19 +1,14 @@
-import 'package:BodyPower/bottom_navigation_bar.dart';
-import 'package:BodyPower/features/user/presentation/screens/login_screen.dart';
+import 'package:BodyPower/features/user/presentation/screens/signin_screen.dart';
 import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../../../../internal/helpers/text_helper.dart';
-import '../../data/controllers/signup_controller.dart';
-import '../widgets/password_signup_textfield_card.dart';
 import '../widgets/signup_textfield_card.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-  ForgetPasswordScreen({super.key});
-
-  final controller = Get.put(SignUpController());
+   ForgetPasswordScreen({super.key});
+final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,17 +51,19 @@ class ForgetPasswordScreen extends StatelessWidget {
                     TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
               ),
             ),
-            SignUpTextFieldCard(
-              controller: controller.email,
-              error: 'е имя'.toLowerCase(),
-            ),
+           SignUpTextFieldCard(
+                    controller: emailController,
+                    textInputType: TextInputType.emailAddress,
+                    error: ' Email'.toLowerCase(),
+                  ),
             const Spacer(),
             Row(
               children: [
                 const Spacer(),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => const LoginScreen());
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>  SignInScreen()));
                   },
                   child: const Text("Войти"),
                 ),

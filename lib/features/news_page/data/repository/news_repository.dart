@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:BodyPower/features/news_page/data/models/news_page_models.dart';
-import 'package:get/get.dart';
 
-class NewsRepository extends GetxController {
-  static NewsRepository get instance => Get.find();
+class NewsRepository {
   final _db = FirebaseFirestore.instance;
   // createUser(UserModel user) async {
   //   try {

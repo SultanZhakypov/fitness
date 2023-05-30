@@ -3,16 +3,14 @@ import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../../internal/helpers/text_helper.dart';
-import '../../data/controllers/otp_controller.dart';
 
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    var otpController = Get.put(OTPController());
     var otp;
+    // final authBloc = AuthentificationBloc();
     return Scaffold(
       appBar: AppBar(
         leading: const BackLeadingCard(),
@@ -49,13 +47,13 @@ class OTPScreen extends StatelessWidget {
                   fieldWidth: 50.r,
                   onSubmit: (code) {
                     otp = code;
-                    OTPController.instance.verifyOTP(otp);
+                    // authBloc.add(VerifyOTPEvent(otp));
                   },
                 ),
                 const Spacer(),
                 InkWell(
                   onTap: () {
-                    OTPController.instance.verifyOTP(otp);
+                    // authBloc.add(VerifyOTPEvent(otp));
                   },
                   child: Container(
                     width: 1.sw,

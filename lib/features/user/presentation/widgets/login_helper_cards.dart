@@ -1,14 +1,20 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../internal/helpers/color_helper.dart';
+import '../logic/auth_bloc/authentification_bloc.dart';
 
 class LoginHelperCards extends StatelessWidget {
   const LoginHelperCards({
     super.key,
   });
+
+  void _authenticateWithGoogle(context) {
+    BlocProvider.of<AuthentificationBloc>(context).add(
+      GoogleSignInRequested(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,9 @@ class LoginHelperCards extends StatelessWidget {
               borderRadius: BorderRadius.circular(12), // <-- Radius
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            _authenticateWithGoogle(context);
+          },
           child: const Icon(
             Icons.g_mobiledata_outlined,
             size: 40,
