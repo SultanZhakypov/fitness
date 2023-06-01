@@ -7,11 +7,12 @@ part 'blogger_event.dart';
 part 'blogger_state.dart';
 
 class BloggerBloc extends Bloc<BloggerEvent, BloggerState> {
-  BloggerBloc() : super(BloggerInitial()) {
+  final BloggerUseCase bloggerUseCase;
+  BloggerBloc({required this.bloggerUseCase}) : super(BloggerInitial()) {
     on<GetBloggersEvent>((event, emit) async {
       emit(LoadingState());
       try {
-        List<BloggerModel> bloggers = await BloggerUseCase().getAllBloggers();
+        List<BloggerModel> bloggers = await bloggerUseCase.getAllBloggers();
         emit(FetchedBloggersState(bloggers));
       } catch (e) {
         log(" BLOGGERS    ${e.toString()}");
@@ -25,7 +26,7 @@ class BloggerBloc extends Bloc<BloggerEvent, BloggerState> {
     on<GetBloggerDetailEvent>((event, emit) async {
       emit(LoadingState());
 
-      BloggerUseCase()
+     bloggerUseCase
           .getDetails(event.id)
           .then((bloggerDetails) =>
               emit(FetchedBloggerDetailState(bloggerDetails)))

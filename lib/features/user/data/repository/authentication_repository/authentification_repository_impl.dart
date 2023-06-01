@@ -4,6 +4,7 @@ import 'package:BodyPower/features/user/domain/repositories/authentification_rep
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+
 class AuthentificationRepositoryImpl implements AuthentificationRepository {
   final _auth = FirebaseAuth.instance;
   // late final Rx<User?> firebaseUser;
@@ -127,4 +128,27 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
       throw e;
     }
   }
+
+  // @override
+  // Future<void> signInWithApple() async {
+    
+  //    final appleCredential = await SignInWithApple.getAppleIDCredential(
+  //           scopes: [
+  //             AppleIDAuthorizationScopes.email,
+  //             AppleIDAuthorizationScopes.fullName,
+  //           ],
+  //           webAuthenticationOptions: WebAuthenticationOptions(
+  //             clientId: 'YOUR_CLIENT_ID',
+  //             redirectUri: Uri.parse('https://example.com/callback'),
+  //           ),
+  //         );
+
+  //         final oauthCredential = OAuthProvider("apple.com").credential(
+  //           idToken: appleCredential.identityToken,
+  //           rawNonce: appleCredential.nonce,
+  //         );
+
+  //         final firebaseUser =
+  //             await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+  // }
 }

@@ -24,5 +24,4 @@ class AuthentificationUseCase {
 
   Future<void> signInWithGoogle() async =>
       await authentificationRepositoryImpl.signInWithGoogle();
-  // void onReady()=>authentificationRepositoryImpl.
 }

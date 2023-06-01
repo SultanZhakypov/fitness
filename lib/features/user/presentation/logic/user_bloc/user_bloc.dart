@@ -6,8 +6,8 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc() : super(UserInitial()) {
-    final userUseCase = UserUseCase();
+    final UserUseCase userUseCase ;
+  UserBloc({required this.userUseCase}) : super(UserInitial()) {
 
     on<GetUserEvent>((event, emit) {
       emit(LoadingState());

@@ -6,12 +6,10 @@ class BloggerModel {
   final String? bloggerCardImage;
   final String? bloggerCardName;
   final String? bloggerCourseName;
-  // final ExerciseGroupCard? exerciseGroupCard;
 
   BloggerModel({
     this.id,
     required this.bloggerCardImage,
-    // required this.exerciseGroupCard,
     required this.bloggerCardName,
     required this.bloggerCourseName,
   });
@@ -25,7 +23,6 @@ class BloggerModel {
       bloggerCardImage: data["BloggerCardImage"],
       bloggerCardName: data["BloggerCardName"],
       bloggerCourseName: data["BloggerCourseName"],
-      // exerciseGroupCard: data["ExerciseGroupCard"],
     );
   }
 }
@@ -34,13 +31,11 @@ class ExerciseGroupCard {
   final String? id;
   final String? name;
   final String? picture;
-  final List<Exercise>? exerciseList;
 
   ExerciseGroupCard({
     this.id,
     required this.name,
     required this.picture,
-    required this.exerciseList,
   });
 
   factory ExerciseGroupCard.fromSnapshot(
@@ -50,7 +45,6 @@ class ExerciseGroupCard {
     return ExerciseGroupCard(
       name: document["Name"],
       picture: document["Picture"],
-      exerciseList: List<Exercise>.from(document["Exercise"].map((x) => x)),
     );
   }
 }

@@ -17,12 +17,16 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-  BloggerBloc bloggerBloc = BloggerBloc();
-
   @override
   void initState() {
-    bloggerBloc.add(GetBloggersEvent());
+    getBloggers(context);
     super.initState();
+  }
+
+  void getBloggers(context) {
+    BlocProvider.of<BloggerBloc>(context).add(
+      GetBloggersEvent(),
+    );
   }
 
   @override
@@ -56,7 +60,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: BlocConsumer<BloggerBloc, BloggerState>(
-            bloc: bloggerBloc,
             listener: (context, state) {},
             builder: (context, state) {
               if (state is LoadingState) {

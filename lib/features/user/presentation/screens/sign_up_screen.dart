@@ -77,18 +77,18 @@ class SignUpScreen extends StatelessWidget {
                           height: 15.h,
                         ),
                         const LoginHelperCards(),
-                        Padding(
-                          padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
-                          child: Text(
-                            'Имя',
-                            style: TextHelper.w700s20
-                                .copyWith(color: ColorHelper.greyD1D3D3),
-                          ),
-                        ),
-                        SignUpTextFieldCard(
-                          controller: nickNameController,
-                          error: 'е имя'.toLowerCase(),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
+                        //   child: Text(
+                        //     'Имя',
+                        //     style: TextHelper.w700s20
+                        //         .copyWith(color: ColorHelper.greyD1D3D3),
+                        //   ),
+                        // ),
+                        // SignUpTextFieldCard(
+                        //   controller: nickNameController,
+                        //   error: 'е имя'.toLowerCase(),
+                        // ),
                         Padding(
                           padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
                           child: Text(
@@ -102,19 +102,19 @@ class SignUpScreen extends StatelessWidget {
                           textInputType: TextInputType.emailAddress,
                           error: ' Email'.toLowerCase(),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                          child: Text(
-                            'Номер телефона',
-                            style: TextHelper.w700s20
-                                .copyWith(color: ColorHelper.greyD1D3D3),
-                          ),
-                        ),
-                        SignUpTextFieldCard(
-                          controller: phoneNumberController,
-                          textInputType: TextInputType.phone,
-                          error: ' Номер телефона'.toLowerCase(),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                        //   child: Text(
+                        //     'Номер телефона',
+                        //     style: TextHelper.w700s20
+                        //         .copyWith(color: ColorHelper.greyD1D3D3),
+                        //   ),
+                        // ),
+                        // SignUpTextFieldCard(
+                        //   controller: phoneNumberController,
+                        //   textInputType: TextInputType.phone,
+                        //   error: ' Номер телефона'.toLowerCase(),
+                        // ),
                         Padding(
                           padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
                           child: Text(

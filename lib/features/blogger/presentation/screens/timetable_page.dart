@@ -15,11 +15,17 @@ class TimeTableScreen extends StatefulWidget {
 }
 
 class _TimeTableScreenState extends State<TimeTableScreen> {
-  BloggerBloc bloc = BloggerBloc();
+  
   @override
   void initState() {
-    bloc.add(GetBloggersEvent());
+    getBloggers(context);
     super.initState();
+  }
+
+  void getBloggers(context) {
+    BlocProvider.of<BloggerBloc>(context).add(
+      GetBloggersEvent(),
+    );
   }
 
   @override
@@ -71,7 +77,6 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
             ];
           },
           body: BlocConsumer<BloggerBloc, BloggerState>(
-            bloc: bloc,
             listener: (context, state) {},
             builder: (context, state) {
               if (state is LoadingState) {
@@ -85,14 +90,6 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(vertical: 20.h),
-                      //   child: Text(
-                      //     "Выберите Курс",
-                      //     style: TextHelper.w700s18
-                      //         .copyWith(color: ColorHelper.greyD1D3D3),
-                      //   ),
-                      // ),
                       const AnimatedContainerWidget(),
                       TabbarViewWidget(
                         bloggers: state.bloggers,

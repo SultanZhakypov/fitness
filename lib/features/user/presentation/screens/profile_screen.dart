@@ -1,4 +1,4 @@
-import 'package:BodyPower/features/user/presentation/screens/signin_screen.dart';
+import 'package:BodyPower/features/user/presentation/screens/welcome_screen.dart';
 import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../logic/auth_bloc/authentification_bloc.dart';
-import '../logic/user_bloc/user_bloc.dart';
 import 'edit_profile_screen.dart';
 import 'muscle_progress_screen.dart';
 
@@ -31,12 +30,12 @@ class ProfileScreen extends StatelessWidget {
       ),
       backgroundColor: ColorHelper.backgroundColor,
       body: SafeArea(
-        child: BlocListener<UserBloc, UserState>(
+        child: BlocListener<AuthentificationBloc, AuthentificationState>(
           listener: (context, state) {
             if (state is UnAuthenticated) {
               // Navigate to the sign in screen when the user Signs Out
               Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => SignInScreen()),
+                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
                 (route) => false,
               );
             }
@@ -46,36 +45,29 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      "Nick name",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                    Text(
-                      user.displayName!,
-                      style: TextHelper.w700s18
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                  ],
-                ),
+                user.displayName != null
+                    ? Text(
+                        "Nick name \n${user.displayName}",
+                        style: TextHelper.w700s16
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      )
+                    : const SizedBox(),
                 SizedBox(
                   height: 30.h,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      "Email",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                    Text(
-                      user.email!,
-                      style: TextHelper.w700s18
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                  ],
+                RichText(
+                  text: TextSpan(
+                    text: 'Email: \n',
+                    style: TextHelper.w700s16
+                        .copyWith(color: ColorHelper.whiteECECEC),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: user.email,
+                        style: TextHelper.w700s18
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 30.h,

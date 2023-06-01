@@ -18,14 +18,11 @@ class SignInScreen extends StatelessWidget {
 
   final controllerPassword = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
 
   void _authenticateWithEmailAndPassword(context) {
-    if (_formKey.currentState!.validate()) {
       BlocProvider.of<AuthentificationBloc>(context).add(
         SignInRequested(controllerEmail.text, controllerPassword.text),
       );
-    }
   }
 
   @override
@@ -85,8 +82,9 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
                     SignUpTextFieldCard(
+                      textInputType: TextInputType.emailAddress,
                       controller: controllerEmail,
-                      error: 'е имя'.toLowerCase(),
+                      error: ' email'.toLowerCase(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20.h, bottom: 15.h),

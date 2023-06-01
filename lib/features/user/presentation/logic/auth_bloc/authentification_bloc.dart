@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:BodyPower/features/user/domain/use_case/authentification_use_case.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'authentification_event.dart';
 part 'authentification_state.dart';
@@ -51,6 +52,8 @@ class AuthentificationBloc
       await authUseCase
           .signUp(email: event.email, password: event.password)
           .then((value) => emit(Authenticated()))
+          .whenComplete(() => MaterialPageRoute(
+              builder: (BuildContext context) => const BottomAppBar()))
           .onError((error, stackTrace) => emit(UnAuthenticated()));
 
       // try {
@@ -69,6 +72,8 @@ class AuthentificationBloc
       await authUseCase
           .signInWithGoogle()
           .then((value) => emit(Authenticated()))
+          .whenComplete(() => MaterialPageRoute(
+              builder: (BuildContext context) => const BottomAppBar()))
           .onError((error, stackTrace) => emit(UnAuthenticated()));
       // try {
       //   await authUseCase.signInWithGoogle();

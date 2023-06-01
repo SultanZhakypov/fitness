@@ -1,5 +1,5 @@
 import 'package:BodyPower/features/blogger/presentation/screens/home_page.dart';
-import 'package:BodyPower/features/blogger/presentation/screens/news_page.dart';
+import 'package:BodyPower/features/news_page/presentation/screens/news_page.dart';
 import 'package:BodyPower/features/blogger/presentation/screens/timetable_page.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +30,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _widgetOptions[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedTab,
           selectedItemColor: ColorHelper.blue01DDEB,
@@ -42,9 +43,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 icon: Icon(Icons.calendar_today), label: "DESK"),
             BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: "NEWS"),
           ]),
-      body: Center(
-        child: _widgetOptions[_selectedTab],
-      ),
     );
   }
 }
