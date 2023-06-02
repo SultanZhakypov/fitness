@@ -41,7 +41,7 @@ class _NewsPageScreenState extends State<NewsPageScreen> {
       body: BlocConsumer<NewsCubit, NewsState>(
         listener: (context, state) {},
         builder: (context, state) {
-          if (state is LoadingState) {
+          if (state is NewsLoadingState) {
             return const Center(
               child: CircularProgressIndicator.adaptive(),
             );

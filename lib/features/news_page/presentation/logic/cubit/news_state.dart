@@ -15,7 +15,7 @@ class FetchedNewsState extends NewsState {
   const FetchedNewsState(this.newsList);
 }
 
-class LoadingState extends NewsState {}
+class NewsLoadingState extends NewsState {}
 class ErrorState extends  NewsState{
   final String error;
 

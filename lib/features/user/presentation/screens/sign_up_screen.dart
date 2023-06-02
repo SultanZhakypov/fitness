@@ -23,7 +23,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -52,108 +51,104 @@ class SignUpScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is Loading) {
+          if (state is AuthLoadingState) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
           if (state is UnAuthenticated) {
             return SafeArea(
-              child: Form(
-                key: _formKey,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Зарегистрируйтесь одним из следующих вариантов",
-                          style: TextHelper.w700s15
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Зарегистрируйтесь одним из следующих вариантов",
+                        style: TextHelper.w700s15
+                            .copyWith(color: ColorHelper.greyD1D3D3),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      const LoginHelperCards(),
+                      // Padding(
+                      //   padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
+                      //   child: Text(
+                      //     'Имя',
+                      //     style: TextHelper.w700s20
+                      //         .copyWith(color: ColorHelper.greyD1D3D3),
+                      //   ),
+                      // ),
+                      // SignUpTextFieldCard(
+                      //   controller: nickNameController,
+                      //   error: 'е имя'.toLowerCase(),
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                        child: Text(
+                          'Email',
+                          style: TextHelper.w700s20
                               .copyWith(color: ColorHelper.greyD1D3D3),
                         ),
-                        SizedBox(
-                          height: 15.h,
+                      ),
+                      SignUpTextFieldCard(
+                        controller: emailController,
+                        textInputType: TextInputType.emailAddress,
+                        error: ' Email'.toLowerCase(),
+                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                      //   child: Text(
+                      //     'Номер телефона',
+                      //     style: TextHelper.w700s20
+                      //         .copyWith(color: ColorHelper.greyD1D3D3),
+                      //   ),
+                      // ),
+                      // SignUpTextFieldCard(
+                      //   controller: phoneNumberController,
+                      //   textInputType: TextInputType.phone,
+                      //   error: ' Номер телефона'.toLowerCase(),
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                        child: Text(
+                          'Пароль',
+                          style: TextHelper.w700s20
+                              .copyWith(color: ColorHelper.greyD1D3D3),
                         ),
-                        const LoginHelperCards(),
-                        // Padding(
-                        //   padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
-                        //   child: Text(
-                        //     'Имя',
-                        //     style: TextHelper.w700s20
-                        //         .copyWith(color: ColorHelper.greyD1D3D3),
-                        //   ),
-                        // ),
-                        // SignUpTextFieldCard(
-                        //   controller: nickNameController,
-                        //   error: 'е имя'.toLowerCase(),
-                        // ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                          child: Text(
-                            'Email',
-                            style: TextHelper.w700s20
+                      ),
+                      PasswordSignUpTextFieldCard(
+                        controller: passwordController,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
+                        child: SignUpButtonCard(
+                          nickNameController: nickNameController,
+                          passwordController: passwordController,
+                          phoneNumberController: phoneNumberController,
+                          emailController: emailController,
+                        ),
+                      ),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'У вас уже есть аккаунт? ',
+                            style: TextHelper.w400s16
                                 .copyWith(color: ColorHelper.greyD1D3D3),
+                            children: [
+                              TextSpan(
+                                text: 'Вход',
+                                style: TextHelper.w400s16bold
+                                    .copyWith(color: ColorHelper.whiteECECEC),
+                              ),
+                            ],
                           ),
                         ),
-                        SignUpTextFieldCard(
-                          controller: emailController,
-                          textInputType: TextInputType.emailAddress,
-                          error: ' Email'.toLowerCase(),
-                        ),
-                        // Padding(
-                        //   padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                        //   child: Text(
-                        //     'Номер телефона',
-                        //     style: TextHelper.w700s20
-                        //         .copyWith(color: ColorHelper.greyD1D3D3),
-                        //   ),
-                        // ),
-                        // SignUpTextFieldCard(
-                        //   controller: phoneNumberController,
-                        //   textInputType: TextInputType.phone,
-                        //   error: ' Номер телефона'.toLowerCase(),
-                        // ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                          child: Text(
-                            'Пароль',
-                            style: TextHelper.w700s20
-                                .copyWith(color: ColorHelper.greyD1D3D3),
-                          ),
-                        ),
-                        PasswordSignUpTextFieldCard(
-                          controller: passwordController,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
-                          child: SignUpButtonCard(
-                            formKey: _formKey,
-                            nickNameController: nickNameController,
-                            passwordController: passwordController,
-                            phoneNumberController: phoneNumberController,
-                            emailController: emailController,
-                          ),
-                        ),
-                        Center(
-                          child: RichText(
-                            text: TextSpan(
-                              text: 'У вас уже есть аккаунт? ',
-                              style: TextHelper.w400s16
-                                  .copyWith(color: ColorHelper.greyD1D3D3),
-                              children: [
-                                TextSpan(
-                                  text: 'Вход',
-                                  style: TextHelper.w400s16bold
-                                      .copyWith(color: ColorHelper.whiteECECEC),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),

@@ -6,16 +6,14 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-    final UserUseCase userUseCase ;
+  final UserUseCase userUseCase;
   UserBloc({required this.userUseCase}) : super(UserInitial()) {
-
     on<GetUserEvent>((event, emit) {
-      emit(LoadingState());
-      
+      emit(UserLoadingState());
     });
 
     on<CreateUserEvent>((event, emit) {
-      emit(LoadingState());
+      emit(UserLoadingState());
       userUseCase
           .createUser(event.userModel)
           .then((_) => emit(CreatedUserState()))

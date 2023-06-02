@@ -4,7 +4,7 @@ abstract class BloggerState {}
 
 class BloggerInitial extends BloggerState {}
 
-class LoadingState extends BloggerState {}
+class BloggerLoadingState extends BloggerState {}
 
 class FetchedBloggersState extends BloggerState {
   final List<BloggerModel> bloggers;

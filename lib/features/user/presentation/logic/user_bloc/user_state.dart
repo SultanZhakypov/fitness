@@ -4,7 +4,7 @@ abstract class UserState {}
 
 class UserInitial extends UserState {}
 
-class LoadingState extends UserState {}
+class UserLoadingState extends UserState {}
 
 class LogInState extends UserState {
   final String email;

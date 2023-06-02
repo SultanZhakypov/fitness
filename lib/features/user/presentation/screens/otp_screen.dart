@@ -10,7 +10,6 @@ class OTPScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var otp;
-    // final authBloc = AuthentificationBloc();
     return Scaffold(
       appBar: AppBar(
         leading: const BackLeadingCard(),
@@ -47,13 +46,11 @@ class OTPScreen extends StatelessWidget {
                   fieldWidth: 50.r,
                   onSubmit: (code) {
                     otp = code;
-                    // authBloc.add(VerifyOTPEvent(otp));
                   },
                 ),
                 const Spacer(),
                 InkWell(
                   onTap: () {
-                    // authBloc.add(VerifyOTPEvent(otp));
                   },
                   child: Container(
                     width: 1.sw,

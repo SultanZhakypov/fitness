@@ -33,7 +33,6 @@ class ProfileScreen extends StatelessWidget {
         child: BlocListener<AuthentificationBloc, AuthentificationState>(
           listener: (context, state) {
             if (state is UnAuthenticated) {
-              // Navigate to the sign in screen when the user Signs Out
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (context) => const WelcomeScreen()),
                 (route) => false,
@@ -62,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                         .copyWith(color: ColorHelper.whiteECECEC),
                     children: <TextSpan>[
                       TextSpan(
-                        text: user.email,
+                        text: user.email!,
                         style: TextHelper.w700s18
                             .copyWith(color: ColorHelper.whiteECECEC),
                       ),
@@ -80,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                           .copyWith(color: ColorHelper.whiteECECEC),
                     ),
                     Text(
-                      user.phoneNumber!,
+                      "${user.phoneNumber}",
                       style: TextHelper.w700s18
                           .copyWith(color: ColorHelper.whiteECECEC),
                     ),

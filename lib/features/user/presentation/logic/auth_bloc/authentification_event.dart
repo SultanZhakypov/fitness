@@ -5,15 +5,12 @@ abstract class AuthentificationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-
-
 class VerifyOTPEvent extends AuthentificationEvent {
   final String otp;
   final String verificationId;
   VerifyOTPEvent(this.otp, this.verificationId);
 }
 
-class LogOutEvent extends AuthentificationEvent {}
 
 class PhoneAuthentificationEvent extends AuthentificationEvent {
   final String phone;

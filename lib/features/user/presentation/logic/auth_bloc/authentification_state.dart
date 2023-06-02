@@ -10,20 +10,17 @@ class AuthentificationInitial extends AuthentificationState {}
 //   ErrorState(this.error);
 // }
 
-class Loading extends AuthentificationState {
-  @override
+class AuthLoadingState extends AuthentificationState {
   List<Object?> get props => [];
 }
 
 // When the user is authenticated the state is changed to Authenticated.
 class Authenticated extends AuthentificationState {
-  @override
   List<Object?> get props => [];
 }
 
 // This is the initial state of the bloc. When the user is not authenticated the state is changed to Unauthenticated.
 class UnAuthenticated extends AuthentificationState {
-  @override
   List<Object?> get props => [];
 }
 
@@ -32,3 +29,5 @@ class AuthError extends AuthentificationState {
   final String error;
   AuthError(this.error);
 }
+
+

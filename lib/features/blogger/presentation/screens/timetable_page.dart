@@ -79,7 +79,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
           body: BlocConsumer<BloggerBloc, BloggerState>(
             listener: (context, state) {},
             builder: (context, state) {
-              if (state is LoadingState) {
+              if (state is BloggerLoadingState) {
                 return const Center(
                   child: CircularProgressIndicator.adaptive(),
                 );

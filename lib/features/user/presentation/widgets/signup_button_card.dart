@@ -4,31 +4,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../../../../internal/helpers/text_helper.dart';
-import '../../data/models/user_model.dart';
 
 class SignUpButtonCard extends StatelessWidget {
   const SignUpButtonCard({
     super.key,
-    required GlobalKey<FormState> formKey,
     required this.nickNameController,
     required this.phoneNumberController,
     required this.passwordController,
     required this.emailController,
-  }) : _formKey = formKey;
+  });
 
-  final GlobalKey<FormState> _formKey;
   final TextEditingController nickNameController;
   final TextEditingController phoneNumberController;
   final TextEditingController passwordController;
   final TextEditingController emailController;
 
   void _authenticateWithEmailAndPassword(context) {
-    if (_formKey.currentState!.validate()) {
-      // If email is valid adding new event [SignUpRequested].
-      BlocProvider.of<AuthentificationBloc>(context).add(
-        SignUpRequested(emailController.text, passwordController.text),
-      );
-    }
+    // If email is valid adding new event [SignUpRequested].
+    BlocProvider.of<AuthentificationBloc>(context).add(
+      SignUpRequested(emailController.text, passwordController.text),
+    );
   }
 
   // void _createUser(context) {

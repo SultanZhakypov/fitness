@@ -10,7 +10,7 @@ class BloggerBloc extends Bloc<BloggerEvent, BloggerState> {
   final BloggerUseCase bloggerUseCase;
   BloggerBloc({required this.bloggerUseCase}) : super(BloggerInitial()) {
     on<GetBloggersEvent>((event, emit) async {
-      emit(LoadingState());
+      emit(BloggerLoadingState());
       try {
         List<BloggerModel> bloggers = await bloggerUseCase.getAllBloggers();
         emit(FetchedBloggersState(bloggers));
@@ -24,9 +24,9 @@ class BloggerBloc extends Bloc<BloggerEvent, BloggerState> {
       //     .onError((error, stackTrace) => emit(ErrorState(error.toString())));
     });
     on<GetBloggerDetailEvent>((event, emit) async {
-      emit(LoadingState());
+      emit(BloggerLoadingState());
 
-     bloggerUseCase
+      bloggerUseCase
           .getDetails(event.id)
           .then((bloggerDetails) =>
               emit(FetchedBloggerDetailState(bloggerDetails)))

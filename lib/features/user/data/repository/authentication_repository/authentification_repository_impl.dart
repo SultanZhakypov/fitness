@@ -1,13 +1,10 @@
 import 'dart:developer';
-
 import 'package:BodyPower/features/user/domain/repositories/authentification_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-
 class AuthentificationRepositoryImpl implements AuthentificationRepository {
   final _auth = FirebaseAuth.instance;
-  // late final Rx<User?> firebaseUser;
 
   @override
   Future<void> signInWithGoogle() async {
@@ -34,9 +31,6 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      // firebaseUser.value != null
-      // ? Get.offAll(() => const WelcomeScreen())
-      // : Get.to(() => BottomNavBar());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         log("Errror  ${e.code.toString()}");
@@ -83,9 +77,7 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
         await _auth.signInWithCredential(credential);
       },
       codeSent: ((verificationId, resendingToken) async {
-        String smsCode = ''; // The code entered by the user
-
-        // Create a PhoneAuthCredential with the verification ID and code
+        String smsCode = '';
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: verificationId,
           smsCode: smsCode,
@@ -97,10 +89,8 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
         log(e.code.toString());
         if (e.code == "invalid-phone-number") {
           log("invalid-phone-number ----  ${e.code.toString()}");
-          // Get.snackbar("Error", "The provider phone number is not valid");
         } else {
           log("Phone verificationfailed    ${e.code.toString()}");
-          // Get.snackbar("Error", "Something went wrong. Try again");
         }
       },
     );
@@ -109,21 +99,17 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
   @override
   Future<bool> verifyOTP(String verificationId, String otp) async {
     try {
-      // Create a PhoneAuthCredential with the verification ID and OTP
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: otp,
       );
 
-      // Sign in with the credential
       UserCredential userCredential =
           await _auth.signInWithCredential(credential);
 
       User? user = userCredential.user;
-      // User is now signed in, you can proceed with further actions
       return user != null ? true : false;
     } catch (e) {
-      // Handle verification failure
       log('Verification failed: ${e.toString()}');
       throw e;
     }
@@ -131,7 +117,7 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
 
   // @override
   // Future<void> signInWithApple() async {
-    
+
   //    final appleCredential = await SignInWithApple.getAppleIDCredential(
   //           scopes: [
   //             AppleIDAuthorizationScopes.email,

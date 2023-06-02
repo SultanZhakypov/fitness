@@ -33,7 +33,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         elevation: 0,
         centerTitle: true,
         title: Image.asset(
@@ -44,10 +44,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ProfileScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
           ),
           SizedBox(
@@ -62,7 +60,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           child: BlocConsumer<BloggerBloc, BloggerState>(
             listener: (context, state) {},
             builder: (context, state) {
-              if (state is LoadingState) {
+              if (state is BloggerLoadingState) {
                 return const Center(
                   child: CircularProgressIndicator.adaptive(),
                 );
