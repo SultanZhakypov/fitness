@@ -1,55 +1,44 @@
 import 'package:BodyPower/features/user/presentation/logic/auth_bloc/authentification_bloc.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../../../../internal/helpers/text_helper.dart';
 
-class SignUpButtonCard extends StatelessWidget {
+class SignUpButtonCard extends StatefulWidget {
   const SignUpButtonCard({
     super.key,
-    required this.nickNameController,
     required this.phoneNumberController,
-    required this.passwordController,
-    required this.emailController,
+    required this.countryCode,
   });
 
-  final TextEditingController nickNameController;
   final TextEditingController phoneNumberController;
-  final TextEditingController passwordController;
-  final TextEditingController emailController;
+  final CountryCode countryCode;
 
-  void _authenticateWithEmailAndPassword(context) {
-    // If email is valid adding new event [SignUpRequested].
-    BlocProvider.of<AuthentificationBloc>(context).add(
-      SignUpRequested(emailController.text, passwordController.text),
-    );
+  @override
+  State<SignUpButtonCard> createState() => _SignUpButtonCardState();
+}
+
+class _SignUpButtonCardState extends State<SignUpButtonCard> {
+  void _sendOtp({required String phoneNumber, required BuildContext context}) {
+    final phoneNumberWithCode = "${widget.countryCode.dialCode}$phoneNumber";
+    context.read<AuthentificationBloc>().add(
+          SendOtpToPhoneEvent(
+            phoneNumber: phoneNumberWithCode,
+          ),
+        );
+    setState(() {
+      widget.phoneNumberController.clear();
+    });
   }
-
-  // void _createUser(context) {
-  //   if (_formKey.currentState!.validate()) {
-  //     BlocProvider.of<UserBloc>(context).add(
-  //       CreateUserEvent(context),
-  //     );
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        _authenticateWithEmailAndPassword(context);
-        // if (_formKey.currentState!.validate()) {
-        // final user = UserModel(
-        //   nickName: nickNameController.text.trim(),
-        //   phoneNumber: phoneNumberController.text.trim(),
-        //   password: passwordController.text.trim(),
-        //   email: emailController.text.trim(),
-        // );
-
-        // Navigator.push(context,
-        //     MaterialPageRoute(builder: (context) => const OTPScreen()));
-        // }
+        _sendOtp(
+            phoneNumber: widget.phoneNumberController.text, context: context);
       },
       child: Container(
         width: 1.sw,
@@ -68,7 +57,7 @@ class SignUpButtonCard extends StatelessWidget {
           ),
         ),
         child: Text(
-          'Зарегистрироваться',
+          'Отправить код',
           style: TextHelper.w700s20.copyWith(color: ColorHelper.whiteECECEC),
         ),
       ),

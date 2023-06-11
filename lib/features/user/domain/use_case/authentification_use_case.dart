@@ -1,13 +1,25 @@
 import 'package:BodyPower/features/user/data/repository/authentication_repository/authentification_repository_impl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthentificationUseCase {
   AuthentificationRepositoryImpl authentificationRepositoryImpl =
       AuthentificationRepositoryImpl();
-  Future<void> phoneAuthentication(String phoneNumber) async =>
-      await authentificationRepositoryImpl.phoneAuthentication(phoneNumber);
+  Future<void> phoneAuthentication({
+    required String phoneNumber,
+    required Function(PhoneAuthCredential) verificationCompleted,
+    required Function(FirebaseAuthException) verificationFailed,
+    required Function(String, int?) codeSent,
+    required Function(String) codeAutoRetrievalTimeout,
+  }) async =>
+      await authentificationRepositoryImpl.phoneAuthentication(
+        phoneNumber: phoneNumber,
+        verificationCompleted: verificationCompleted,
+        verificationFailed: verificationFailed,
+        codeSent: codeSent,
+        codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
 
-  Future<bool> verifyOTP(String verificationId, String otp) async =>
-      await authentificationRepositoryImpl.verifyOTP(verificationId, otp);
+  Future<bool> verifyOTP({required String otp}) async =>
+      await authentificationRepositoryImpl.verifyOTP(otp: otp);
 
   Future<void> signUp(
           {required String email, required String password}) async =>

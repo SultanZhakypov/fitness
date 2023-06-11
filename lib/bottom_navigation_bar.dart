@@ -3,6 +3,9 @@ import 'package:BodyPower/features/news_page/presentation/screens/news_page.dart
 import 'package:BodyPower/features/blogger/presentation/screens/timetable_page.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'features/user/presentation/screens/profile_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -30,6 +33,31 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        centerTitle: true,
+        title: Image.asset(
+          "assets/images/BODYPOWER.png",
+          width: 136.w,
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()));
+            },
+          ),
+          SizedBox(
+            width: 15.w,
+          )
+        ],
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: ColorHelper.backgroundColor,
       body: _widgetOptions[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedTab,

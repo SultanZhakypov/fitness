@@ -81,11 +81,11 @@ class SignInScreen extends StatelessWidget {
                             .copyWith(color: ColorHelper.greyD1D3D3),
                       ),
                     ),
-                    SignUpTextFieldCard(
-                      textInputType: TextInputType.emailAddress,
-                      controller: controllerEmail,
-                      error: ' email'.toLowerCase(),
-                    ),
+                    // SignUpTextFieldCard(
+                    //   textInputType: TextInputType.emailAddress,
+                    //   controller: controllerEmail,
+                    //   error: ' email'.toLowerCase(),
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
                       child: Text(

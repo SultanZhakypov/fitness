@@ -3,12 +3,9 @@ part of 'authentification_bloc.dart';
 abstract class AuthentificationState {}
 
 class AuthentificationInitial extends AuthentificationState {}
+// class PhoneCodeSentState extends AuthentificationState{}
 
-// class ErrorState extends AuthentificationState {
-//   final String error;
-
-//   ErrorState(this.error);
-// }
+// class PhoneCodeCompleteState extends AuthentificationState{}
 
 class AuthLoadingState extends AuthentificationState {
   List<Object?> get props => [];
@@ -27,7 +24,27 @@ class UnAuthenticated extends AuthentificationState {
 // If any error occurs the state is changed to AuthError.
 class AuthError extends AuthentificationState {
   final String error;
-  AuthError(this.error);
+  AuthError({required this.error});
+  @override
+  List<Object> get props => [error];
 }
 
+// class PhoneAuthError extends AuthentificationState {
+//   final String error;
 
+//   PhoneAuthError({required this.error});
+
+//   @override
+//   List<Object> get props => [error];
+// }
+
+class PhoneAuthVerified extends AuthentificationState {}
+
+class PhoneAuthCodeSentSuccess extends AuthentificationState {
+  final String verificationId;
+  PhoneAuthCodeSentSuccess({
+    required this.verificationId,
+  });
+  @override
+  List<Object> get props => [verificationId];
+}

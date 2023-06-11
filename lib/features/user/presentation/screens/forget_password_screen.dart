@@ -7,8 +7,8 @@ import '../../../../internal/helpers/text_helper.dart';
 import '../widgets/signup_textfield_card.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-   ForgetPasswordScreen({super.key});
-final emailController = TextEditingController();
+  ForgetPasswordScreen({super.key});
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +51,21 @@ final emailController = TextEditingController();
                     TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
               ),
             ),
-           SignUpTextFieldCard(
-                    controller: emailController,
-                    textInputType: TextInputType.emailAddress,
-                    error: ' Email'.toLowerCase(),
-                  ),
+            //  SignUpTextFieldCard(
+            //           controller: emailController,
+            //           textInputType: TextInputType.emailAddress,
+            //           error: ' Email'.toLowerCase(),
+            //         ),
             const Spacer(),
             Row(
               children: [
                 const Spacer(),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>  SignInScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignInScreen()));
                   },
                   child: const Text("Войти"),
                 ),

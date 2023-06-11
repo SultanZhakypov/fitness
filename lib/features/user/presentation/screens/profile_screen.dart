@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                         .copyWith(color: ColorHelper.whiteECECEC),
                     children: <TextSpan>[
                       TextSpan(
-                        text: user.email!,
+                        text: user.email != null ? user.email : "",
                         style: TextHelper.w700s18
                             .copyWith(color: ColorHelper.whiteECECEC),
                       ),
@@ -69,22 +69,22 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: user.phoneNumber != null ? 30.h : 0,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      "Phone number",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                    Text(
-                      "${user.phoneNumber}",
-                      style: TextHelper.w700s18
-                          .copyWith(color: ColorHelper.whiteECECEC),
-                    ),
-                  ],
-                ),
+                user.phoneNumber != null
+                    ? Text(
+                        "Phone number:",
+                        style: TextHelper.w700s16
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      )
+                    : const SizedBox(),
+                user.phoneNumber != null
+                    ? Text(
+                        user.phoneNumber!,
+                        style: TextHelper.w700s18
+                            .copyWith(color: ColorHelper.whiteECECEC),
+                      )
+                    : const SizedBox(),
                 SizedBox(
                   height: 30.h,
                 ),

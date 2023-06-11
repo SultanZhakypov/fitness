@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthentificationRepositoryImpl implements AuthentificationRepository {
   final _auth = FirebaseAuth.instance;
+  var verificationId = "";
 
   @override
   Future<void> signInWithGoogle() async {
@@ -70,34 +71,33 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
   }
 
   @override
-  Future<void> phoneAuthentication(String phoneNumber) async {
+  Future<void> phoneAuthentication({
+    required String phoneNumber,
+    required Function(PhoneAuthCredential) verificationCompleted,
+    required Function(FirebaseAuthException) verificationFailed,
+    required Function(String, int?) codeSent,
+    required Function(String) codeAutoRetrievalTimeout,
+  }) async {
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      verificationCompleted: (credential) async {
-        await _auth.signInWithCredential(credential);
-      },
-      codeSent: ((verificationId, resendingToken) async {
-        String smsCode = '';
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: verificationId,
-          smsCode: smsCode,
-        );
-        await _auth.signInWithCredential(credential);
-      }),
-      codeAutoRetrievalTimeout: (verificationId) {},
-      verificationFailed: (e) {
-        log(e.code.toString());
-        if (e.code == "invalid-phone-number") {
-          log("invalid-phone-number ----  ${e.code.toString()}");
-        } else {
-          log("Phone verificationfailed    ${e.code.toString()}");
-        }
-      },
+      verificationCompleted:verificationCompleted,
+      codeSent:codeSent,
+      codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+      verificationFailed: verificationFailed,
+      // (e) {
+      //   // verificationFailed;
+      //   log(e.code.toString());
+      //   // if (e.code == "invalid-phone-number") {
+      //   //   log("invalid-phone-number ----  ${e.code.toString()}");
+      //   // } else {
+      //   //   log("Phone verificationfailed    ${e.code.toString()}");
+      //   // }
+      // },
     );
   }
 
   @override
-  Future<bool> verifyOTP(String verificationId, String otp) async {
+  Future<bool> verifyOTP({required String otp}) async {
     try {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId,
