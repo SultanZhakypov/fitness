@@ -18,11 +18,10 @@ class SignInScreen extends StatelessWidget {
 
   final controllerPassword = TextEditingController();
 
-
   void _authenticateWithEmailAndPassword(context) {
-      BlocProvider.of<AuthentificationBloc>(context).add(
-        SignInRequested(controllerEmail.text, controllerPassword.text),
-      );
+    BlocProvider.of<AuthentificationBloc>(context).add(
+      SignInRequested(controllerEmail.text, controllerPassword.text),
+    );
   }
 
   @override

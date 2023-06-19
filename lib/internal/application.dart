@@ -2,9 +2,9 @@ import 'package:BodyPower/features/blogger/domain/use_case/blogger_use_case.dart
 import 'package:BodyPower/features/blogger/presentation/logic/bloc/blogger_bloc.dart';
 import 'package:BodyPower/features/news_page/domain/use_case/news_use_case.dart';
 import 'package:BodyPower/features/news_page/presentation/logic/cubit/news_cubit.dart';
+import 'package:BodyPower/features/splash_screen/splash_screen.dart';
 import 'package:BodyPower/features/user/domain/use_case/user_use_case.dart';
 import 'package:BodyPower/features/user/presentation/logic/user_bloc/user_bloc.dart';
-import 'package:BodyPower/features/user/presentation/screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
                   if (snapshot.hasData) {
                     return const BottomNavBar();
                   }
-                  return const WelcomeScreen();
+                  return const SplashScreen();
                 },
               ),
             ),
