@@ -2,10 +2,12 @@ import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/text_helper.dart';
+import '../../data/models/blogger_model.dart';
 import 'blogger_card.dart';
 
 class TabbarViewWidget extends StatelessWidget {
-  const TabbarViewWidget({super.key});
+  final List<BloggerModel> bloggers;
+  const TabbarViewWidget({super.key, required this.bloggers});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,12 @@ class TabbarViewWidget extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  BloggerCard(),
-                  BloggerCard(),
+                  BloggerCard(
+                    bloggerModel: bloggers,
+                  ),
+                  BloggerCard(
+                    bloggerModel: bloggers,
+                  ),
                 ],
               ),
             )

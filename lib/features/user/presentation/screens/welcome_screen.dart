@@ -1,10 +1,7 @@
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import 'login_screen.dart';
+import 'signin_screen.dart';
 import 'sign_up_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -17,7 +14,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
-    initialization();
+    // initialization();
     super.initState();
   }
 
@@ -30,7 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     print('ready in 0...');
     await Future.delayed(const Duration(seconds: 1));
     print('go!');
-    FlutterNativeSplash.remove();
+    // FlutterNativeSplash.remove();
   }
 
   @override
@@ -62,13 +59,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         backgroundColor: ColorHelper.blue01DDEB,
                       ),
                       onPressed: () {
-                        // Get.to(() => LoginScreen());
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
+                                builder: (context) => SignInScreen()));
                       },
-                      child: Text("Вход"),
+                      child: const Text("Вход"),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -76,9 +72,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         fixedSize: Size(0.4.sw, 50.h),
                       ),
                       onPressed: () {
-                        Get.to(() => SignUpScreen());
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpScreen()));
                       },
-                      child: Text("Регистрация"),
+                      child: const Text("Регистрация"),
                     ),
                   ],
                 ),

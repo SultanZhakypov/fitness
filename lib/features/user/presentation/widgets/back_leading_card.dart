@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
 import '../../../../internal/helpers/color_helper.dart';
 
 class BackLeadingCard extends StatelessWidget {
@@ -34,7 +32,7 @@ class BackLeadingCard extends StatelessWidget {
         iconSize: 20.r,
         color: ColorHelper.greyD1D3D3,
         onPressed: () {
-          Get.back();
+          Navigator.pop(context);
         },
       ),
     );

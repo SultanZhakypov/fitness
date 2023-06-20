@@ -1,24 +1,43 @@
+import 'package:BodyPower/bottom_navigation_bar.dart';
+import 'package:BodyPower/features/user/presentation/widgets/otp_widget.dart';
 import 'package:BodyPower/features/user/presentation/widgets/login_helper_cards.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import '../../data/controllers/signup_controller.dart';
+import '../logic/auth_bloc/authentification_bloc.dart';
 import '../widgets/back_leading_card.dart';
-import '../widgets/password_signup_textfield_card.dart';
-import '../widgets/signup_button_card.dart';
-import '../widgets/signup_textfield_card.dart';
+import '../widgets/phone_number_widget.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(SignUpController());
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _formKey = GlobalKey<FormState>();
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
 
+class _SignUpScreenState extends State<SignUpScreen> {
+  late TextEditingController phoneNumberController;
+
+  late TextEditingController codeController;
+
+  @override
+  void initState() {
+    phoneNumberController = TextEditingController();
+    codeController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    phoneNumberController.dispose();
+    codeController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -31,10 +50,36 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: ColorHelper.backgroundColor,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
+      body: BlocConsumer<AuthentificationBloc, AuthentificationState>(
+        listener: (context, state) {
+          if (state is Authenticated) {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const BottomNavBar(),
+              ),
+            );
+          }
+          if (state is PhoneAuthVerified) {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (_) => const BottomNavBar(),
+              ),
+            );
+          }
+
+          if (state is AuthError) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.error)));
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
               child: Column(
@@ -49,81 +94,20 @@ class SignUpScreen extends StatelessWidget {
                     height: 15.h,
                   ),
                   const LoginHelperCards(),
-                  Padding(
-                    padding: EdgeInsets.only(top: 40.h, bottom: 15.h),
-                    child: Text(
-                      'Имя',
-                      style: TextHelper.w700s20
-                          .copyWith(color: ColorHelper.greyD1D3D3),
+                  if (state is! PhoneAuthCodeSentSuccess)
+                    PhoneNumberWidget(
+                      phoneNumberController: phoneNumberController,
+                    )
+                  else
+                    OtpWidget(
+                      codeController: codeController,
+                      verificationId: state.verificationId,
                     ),
-                  ),
-                  SignUpTextFieldCard(
-                    controller: controller.nickName,
-                    error: 'е имя'.toLowerCase(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                    child: Text(
-                      'Email',
-                      style: TextHelper.w700s20
-                          .copyWith(color: ColorHelper.greyD1D3D3),
-                    ),
-                  ),
-                  SignUpTextFieldCard(
-                    controller: controller.email,
-                    textInputType: TextInputType.emailAddress,
-                    error: ' Email'.toLowerCase(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                    child: Text(
-                      'Номер телефона',
-                      style: TextHelper.w700s20
-                          .copyWith(color: ColorHelper.greyD1D3D3),
-                    ),
-                  ),
-                  SignUpTextFieldCard(
-                    controller: controller.phoneNumber,
-                    textInputType: TextInputType.phone,
-                    error: ' Номер телефона'.toLowerCase(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-                    child: Text(
-                      'Пароль',
-                      style: TextHelper.w700s20
-                          .copyWith(color: ColorHelper.greyD1D3D3),
-                    ),
-                  ),
-                  PasswordSignUpTextFieldCard(
-                    controller: controller.password,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
-                    child: SignUpButtonCard(
-                        formKey: _formKey, controller: controller),
-                  ),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: 'У вас уже есть аккаунт? ',
-                        style: TextHelper.w400s16
-                            .copyWith(color: ColorHelper.greyD1D3D3),
-                        children: [
-                          TextSpan(
-                            text: 'Вход',
-                            style: TextHelper.w400s16bold
-                                .copyWith(color: ColorHelper.whiteECECEC),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

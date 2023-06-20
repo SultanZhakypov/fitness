@@ -1,31 +1,20 @@
-import 'dart:math';
 
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:BodyPower/features/blogger/data/controllers/blogger_controller.dart';
+import 'package:BodyPower/features/blogger/data/models/blogger_model.dart';
 import 'package:BodyPower/features/blogger/presentation/screens/course_information_screen.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../../internal/helpers/color_helper.dart';
 
 class BloggerCard extends StatelessWidget {
   BloggerCard({
-    super.key,
+    super.key, required this.bloggerModel,
   });
 
-  final storage = FirebaseStorage.instance;
-
-  // @override
+final List<BloggerModel> bloggerModel;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(BloggerController());
-    return FutureBuilder(
-        future: controller.getAllBloggers(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasData) {
-              return ListView.separated(
+    return ListView.separated(
                 padding: EdgeInsets.zero,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: false,
@@ -43,20 +32,20 @@ class BloggerCard extends StatelessWidget {
                       ),
                       image: DecorationImage(
                           image: NetworkImage(
-                              snapshot.data![index].bloggerCardImage),
+                              bloggerModel[index].bloggerCardImage!),
                           fit: BoxFit.cover),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          snapshot.data![index].bloggerCardName,
+                        bloggerModel[index].bloggerCardName!,
                           style: TextHelper.w700s16
                               .copyWith(color: ColorHelper.greyD1D3D3),
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          snapshot.data![index].bloggerCourseName,
+                          bloggerModel[index].bloggerCourseName!,
                           style: TextHelper.w700s16
                               .copyWith(color: ColorHelper.greyD1D3D3),
                         ),
@@ -102,22 +91,10 @@ class BloggerCard extends StatelessWidget {
                     ),
                   );
                 },
-                itemCount: snapshot.data!.length,
+                itemCount:bloggerModel.length,
                 separatorBuilder: (context, index) => SizedBox(height: 30.h),
               );
-            } else if (snapshot.hasError) {
-              print("ERRRROOR=====${e.toString()}");
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            } else {
-              return const Center(
-                child: Text("Something went wrong"),
-              );
-            }
-          } else {
-            return const Center(child: CircularProgressIndicator.adaptive());
-          }
-        });
+           
+        }
   }
-}
+

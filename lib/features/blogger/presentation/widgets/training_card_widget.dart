@@ -3,7 +3,6 @@ import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../screens/training_screen.dart';
 
 class TrainingCardWidget extends StatelessWidget {
