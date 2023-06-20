@@ -4,8 +4,9 @@ import 'package:BodyPower/features/blogger/presentation/screens/timetable_page.d
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'features/achievement_screen/presentation/screens/achievements_screen.dart';
 import 'features/user/presentation/screens/profile_screen.dart';
+import 'internal/helpers/text_helper.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -18,6 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedTab = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePageScreen(),
+    AchievementsScreen(),
     TimeTableScreen(),
     NewsPageScreen(),
   ];
@@ -36,14 +38,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        centerTitle: true,
-        title: Image.asset(
-          "assets/images/BODYPOWER.png",
-          width: 136.w,
+        leading: Padding(
+          padding: EdgeInsets.only(left: 16.w),
+          child: Image.asset(
+            "assets/icons/body_power_icon.png",
+            color: ColorHelper.textColor,
+          ),
+        ),
+        title: Container(
+          width: 263.w,
+          height: 62.h,
+          decoration: BoxDecoration(
+              color: ColorHelper.green90E072,
+              borderRadius: BorderRadius.circular(14)),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
+            icon: Icon(
+              Icons.settings,
+              // size: 20.r,
+            ),
             onPressed: () {
               Navigator.push(
                   context,
@@ -60,17 +74,45 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundColor: ColorHelper.backgroundColor,
       body: _widgetOptions[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedTab,
-          selectedItemColor: ColorHelper.blue01DDEB,
-          unselectedItemColor: Colors.white,
-          backgroundColor: const Color(0xff878383),
-          onTap: onSelectTab,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "HOME"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today), label: "DESK"),
-            BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: "NEWS"),
-          ]),
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedTab,
+        selectedItemColor: ColorHelper.green90E072,
+        selectedLabelStyle: TextHelper.w400s12,
+        unselectedLabelStyle: TextHelper.w400s12,
+        unselectedItemColor: ColorHelper.grey878787,
+        backgroundColor: ColorHelper.black101010,
+        onTap: onSelectTab,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/home_icon.png"),
+              size: 22.r,
+            ),
+            label: "Главная",
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/achievements_icon.png"),
+              size: 22.r,
+            ),
+            label: "Достижения",
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/courses_icon.png"),
+              size: 22.r,
+            ),
+            label: "Курсы",
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("assets/icons/news_icon.png"),
+              size: 22.r,
+            ),
+            label: "Новости",
+          ),
+        ],
+      ),
     );
   }
 }

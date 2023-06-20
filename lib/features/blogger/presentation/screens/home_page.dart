@@ -1,5 +1,4 @@
 import 'package:BodyPower/features/blogger/presentation/widgets/day_view_widget.dart';
-import 'package:BodyPower/features/user/presentation/screens/profile_screen.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
