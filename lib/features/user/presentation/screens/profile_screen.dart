@@ -1,4 +1,3 @@
-import 'package:BodyPower/features/user/presentation/screens/welcome_screen.dart';
 import 'package:BodyPower/features/user/presentation/widgets/back_leading_card.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
@@ -33,10 +32,10 @@ class ProfileScreen extends StatelessWidget {
         child: BlocListener<AuthentificationBloc, AuthentificationState>(
           listener: (context, state) {
             if (state is UnAuthenticated) {
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-                (route) => false,
-              );
+              // Navigator.of(context).pushAndRemoveUntil(
+              //   MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+              //   (route) => false,
+              // );
             }
           },
           child: Padding(

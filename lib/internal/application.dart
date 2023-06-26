@@ -5,13 +5,12 @@ import 'package:BodyPower/features/news_page/presentation/logic/cubit/news_cubit
 import 'package:BodyPower/features/splash_screen/splash_screen.dart';
 import 'package:BodyPower/features/user/domain/use_case/user_use_case.dart';
 import 'package:BodyPower/features/user/presentation/logic/user_bloc/user_bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../bottom_navigation_bar.dart';
 import '../features/user/domain/use_case/authentification_use_case.dart';
 import '../features/user/presentation/logic/auth_bloc/authentification_bloc.dart';
+import 'helpers/color_helper.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -59,16 +58,12 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.blue,
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorHelper.buttonColor),
+                ),
               ),
-              home: StreamBuilder<User?>(
-                stream: FirebaseAuth.instance.authStateChanges(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return const BottomNavBar();
-                  }
-                  return const SplashScreen();
-                },
-              ),
+              home: const SplashScreen(),
             ),
           ),
         );

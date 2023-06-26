@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../logic/bloc/blogger_bloc.dart';
-import '../widgets/animated_container_widget.dart';
+import '../widgets/select_gender_card.dart';
 import '../widgets/gender_tabbar_view_widget.dart';
 
 class TimeTableScreen extends StatefulWidget {
@@ -29,41 +29,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      // physics: NeverScrollableScrollPhysics(),
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            expandedHeight: 200.0,
-            floating: false,
-            // pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              title: RichText(
-                text: TextSpan(
-                  text: 'Программы ',
-                  style: TextHelper.w700s20
-                      .copyWith(color: ColorHelper.blue01DDEB),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'тренировок',
-                      style: TextStyle(color: ColorHelper.greyD1D3D3),
-                    ),
-                  ],
-                ),
-              ),
-              background: Image.asset(
-                "assets/images/splash.png",
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ];
-      },
-      body: BlocConsumer<BloggerBloc, BloggerState>(
+    return BlocConsumer<BloggerBloc, BloggerState>(
         listener: (context, state) {},
         builder: (context, state) {
           if (state is BloggerLoadingState) {
@@ -73,11 +39,20 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
           }
           if (state is FetchedBloggersState) {
             return Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.only(
+                top: 41.h,
+                left: 16.w,
+                right: 16.w,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AnimatedContainerWidget(),
+                  Text(
+                    "Программы тренировок",
+                    style: TextHelper.w700s20
+                        .copyWith(color: ColorHelper.defaultThemeColor),
+                  ),
+                  SelectGenderCard(),
                   TabbarViewWidget(
                     bloggers: state.bloggers,
                   ),
@@ -86,8 +61,6 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
             );
           }
           return const SizedBox();
-        },
-      ),
-    );
+        });
   }
 }

@@ -20,20 +20,20 @@ class TabbarViewWidget extends StatelessWidget {
           children: <Widget>[
             TabBar(
               // labelPadding: EdgeInsets.only(top: 30.h),
-              padding: EdgeInsets.symmetric(vertical: 30.h),
+              padding: EdgeInsets.only(bottom: 10.h),
               // isScrollable: true,
-              labelStyle: TextHelper.w700s10,
+              labelStyle: TextHelper.w500s16,
 
-              labelColor: ColorHelper.greyD1D3D3,
-              indicatorColor: ColorHelper.blue01DDEB,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorWeight: 2,
+              labelColor: ColorHelper.defaultThemeColor,
+              unselectedLabelStyle: TextHelper.w500s16,
+              unselectedLabelColor: ColorHelper.alwaysGrey929292,
+              indicatorColor: Colors.transparent,
               tabs: const <Widget>[
                 Tab(
-                  text: "Курсы для мужчин",
+                  text: "Курсы для зала",
                 ),
                 Tab(
-                  text: "Курсы для женщин",
+                  text: "Курсы для дома",
                 ),
               ],
             ),

@@ -1,4 +1,3 @@
-
 import 'package:BodyPower/features/blogger/data/models/blogger_model.dart';
 import 'package:BodyPower/features/blogger/presentation/screens/course_information_screen.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
@@ -7,94 +6,91 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 
 class BloggerCard extends StatelessWidget {
-  BloggerCard({
-    super.key, required this.bloggerModel,
+  const BloggerCard({
+    super.key,
+    required this.bloggerModel,
   });
 
-final List<BloggerModel> bloggerModel;
+  final List<BloggerModel> bloggerModel;
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: false,
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: 353.w,
-                    height: 160.h,
-                    padding: EdgeInsets.all(16.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                      color: Colors.transparent,
-                      border: Border.all(
-                        width: 1,
-                        color: ColorHelper.white10,
+      padding: EdgeInsets.zero,
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: false,
+      itemBuilder: (context, index) {
+        return Container(
+          width: 343.w,
+          height: 144.h,
+          padding: EdgeInsets.only(
+            left: 16.w,
+            right: 7.w,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14.r),
+            image: DecorationImage(
+                image: NetworkImage(bloggerModel[index].bloggerCardImage!),
+                fit: BoxFit.cover),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                bloggerModel[index].bloggerCardName!,
+                style: TextHelper.w700s20
+                    .copyWith(color: ColorHelper.alwaysWhiteFFFFFF),
+              ),
+              SizedBox(height: 27.h),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 11.h),
+                      child: Text(
+                        bloggerModel[index].bloggerCourseName!,
+                        style: TextHelper.w500s16
+                            .copyWith(color: ColorHelper.alwaysWhiteFFFFFF),
                       ),
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              bloggerModel[index].bloggerCardImage!),
-                          fit: BoxFit.cover),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(155.w, 25.h),
+                      elevation: 0,
+                      backgroundColor: ColorHelper.black000000.withOpacity(0.5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.r),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                        bloggerModel[index].bloggerCardName!,
-                          style: TextHelper.w700s16
-                              .copyWith(color: ColorHelper.greyD1D3D3),
+                          "Подробнее ",
+                          style: TextHelper.w500s10
+                              .copyWith(color: ColorHelper.alwaysWhiteFFFFFF),
                         ),
-                        SizedBox(height: 16.h),
-                        Text(
-                          bloggerModel[index].bloggerCourseName!,
-                          style: TextHelper.w700s16
-                              .copyWith(color: ColorHelper.greyD1D3D3),
+                        Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: ColorHelper.alwaysWhiteFFFFFF,
+                          size: 12.r,
                         ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            const Spacer(),
-                            Container(
-                              width: 79.w,
-                              height: 19.h,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 4,
-                                    color:
-                                        ColorHelper.blue01DDEB.withOpacity(0.8),
-                                  )
-                                ],
-                                color: ColorHelper.blue01DDEB.withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(2.r),
-                              ),
-                              child: Text(
-                                "Подробнее",
-                                style: TextHelper.w400s11,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const CourseInformationScreen();
-                                }));
-                              },
-                              icon: Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: ColorHelper.greyD1D3D3,
-                              ),
-                            )
-                          ],
-                        )
                       ],
                     ),
-                  );
-                },
-                itemCount:bloggerModel.length,
-                separatorBuilder: (context, index) => SizedBox(height: 30.h),
-              );
-           
-        }
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+      itemCount: bloggerModel.length,
+      separatorBuilder: (context, index) => SizedBox(height: 14.h),
+    );
   }
-
+}
