@@ -11,53 +11,80 @@ class TrainingScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.only(top: 30.h),
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => TrainingScreen(exerciseName: trainingNames[index],)));
-          },
-          child: Container(
-            width: 343.w,
-            height: 76.h,
-            padding: EdgeInsets.only(top: 13.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: index == 0
-                    ? Radius.circular(14.r)
-                    : const Radius.circular(0),
-                bottom: index == trainingImages.length - 1
-                    ? Radius.circular(14.r)
-                    : const Radius.circular(0),
-              ),
-              image: DecorationImage(
-                image: AssetImage("${trainingImages[index]}"),
-                fit: BoxFit.fill,
-              ),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Первая тренировка",
+              style:
+                  TextHelper.w500s12.copyWith(color: ColorHelper.green90E072),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  trainingNames[index],
-                  style: TextHelper.w500s16
-                      .copyWith(color: ColorHelper.alwaysWhiteFFFFFF),
-                ),
-                Text(
-                  "$index упражнение",
-                  style: TextHelper.w500s10.copyWith(
-                      color: ColorHelper.alwaysWhiteFFFFFF.withOpacity(0.5)),
-                ),
-              ],
+            SizedBox(width: 10.w),
+            Text(
+              "1 час 35 мин",
+              style: TextHelper.w500s12
+                  .copyWith(color: ColorHelper.defaultThemeColor),
             ),
+          ],
+        ),
+        Expanded(
+          child: ListView.builder(
+            padding: EdgeInsets.only(top: 8.h),
+            // physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TrainingScreen(
+                                exerciseName: trainingNames[index],
+                              )));
+                },
+                child: Container(
+                  width: 343.w,
+                  height: 76.h,
+                  padding: EdgeInsets.only(top: 13.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      top: index == 0
+                          ? Radius.circular(14.r)
+                          : const Radius.circular(0),
+                      bottom: index == trainingImages.length - 1
+                          ? Radius.circular(14.r)
+                          : const Radius.circular(0),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage("${trainingImages[index]}"),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        trainingNames[index],
+                        style: TextHelper.w500s16
+                            .copyWith(color: ColorHelper.alwaysWhiteFFFFFF),
+                      ),
+                      Text(
+                        "$index упражнение",
+                        style: TextHelper.w500s10.copyWith(
+                            color:
+                                ColorHelper.alwaysWhiteFFFFFF.withOpacity(0.5)),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+            itemCount: trainingImages.length,
           ),
-        );
-      },
-      itemCount: trainingImages.length,
+        ),
+      ],
     );
   }
 }

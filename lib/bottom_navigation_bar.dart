@@ -1,6 +1,6 @@
 import 'package:BodyPower/features/user/presentation/screens/home_page.dart';
 import 'package:BodyPower/features/news_page/presentation/screens/news_screen.dart';
-import 'package:BodyPower/features/blogger/presentation/screens/timetable_page.dart';
+import 'package:BodyPower/features/blogger/presentation/screens/course_list_screen.dart';
 import 'package:BodyPower/features/user/presentation/screens/sign_up_screen.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,18 +12,27 @@ import 'internal/custom_appbar.dart';
 import 'internal/helpers/text_helper.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  final int? selectedTab;
+  const BottomNavBar({super.key, this.selectedTab});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedTab = 0;
+  int? _selectedTab;
+  @override
+  void initState() {
+    widget.selectedTab == null
+        ? _selectedTab = 0
+        : _selectedTab = widget.selectedTab;
+    super.initState();
+  }
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomePageScreen(),
     AchievementsScreen(),
-    TimeTableScreen(),
+    CourseListScreen(),
     NewsScreen(),
   ];
 
@@ -40,10 +49,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       appBar: const CustomAppBar(),
       backgroundColor: ColorHelper.backgroundColor,
-      body: _widgetOptions[_selectedTab],
+      body: _widgetOptions[_selectedTab!],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedTab,
+        currentIndex: _selectedTab!,
         selectedItemColor: ColorHelper.green90E072,
         unselectedItemColor: ColorHelper.grey878787,
         backgroundColor: ColorHelper.black101010,

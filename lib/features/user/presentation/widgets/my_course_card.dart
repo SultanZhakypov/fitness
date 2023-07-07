@@ -1,3 +1,5 @@
+import 'package:BodyPower/bottom_navigation_bar.dart';
+import 'package:BodyPower/features/achievement_screen/presentation/screens/achievements_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
@@ -21,7 +23,7 @@ class MyCourseCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.r),
         color: ColorHelper.cardsBackground,
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage("assets/images/my_course_image.png"),
           fit: BoxFit.fill,
         ),
@@ -49,14 +51,15 @@ class MyCourseCard extends StatelessWidget {
                       .copyWith(color: ColorHelper.trainingTypeColor),
                 ),
               ),
-              Card(
+              Container(
                 margin: EdgeInsets.only(
                   left: 24.w,
                   right: 47.w,
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14.r)),
-                color: ColorHelper.trainingTypeColor,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14.r),
+                  color: ColorHelper.trainingTypeColor,
+                ),
                 child: SizedBox(
                   height: 28.h,
                   width: 104.w,
@@ -66,7 +69,7 @@ class MyCourseCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ImageIcon(
-                          AssetImage("assets/images/barbell_icon.png"),
+                          const AssetImage("assets/images/barbell_icon.png"),
                           size: 10.r,
                         ),
                         SizedBox(width: 7.w),
@@ -83,7 +86,14 @@ class MyCourseCard extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BottomNavBar(
+                            selectedTab: 1,
+                          )));
+            },
             style: ElevatedButton.styleFrom(
               fixedSize: Size(
                 202.w,

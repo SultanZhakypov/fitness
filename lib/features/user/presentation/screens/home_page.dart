@@ -9,6 +9,7 @@ import '../../../blogger/presentation/logic/bloc/blogger_bloc.dart';
 import '../widgets/my_course_card.dart';
 import '../widgets/training_schedule_card.dart';
 import '../widgets/trainings_isnot_added_card.dart';
+import '../widgets/week_schedule_tabbar.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -43,43 +44,37 @@ class _HomePageScreenState extends State<HomePageScreen> {
           );
         }
         if (state is FetchedBloggersState) {
-          return SingleChildScrollView(
-            child: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.all(16.r),
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Мои курсы",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.defaultThemeColor),
-                    ),
-                    isBought
-                        ? const MyCourseCard()
-                        : const CourseIsNotBoughtCard(),
-                    Text(
-                      "Расписание тренировок",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.defaultThemeColor),
-                    ),
-                    SizedBox(height: 28.h),
-                    Text(
-                      date.toString(),
-                      style: TextHelper.w500s10
-                          .copyWith(color: ColorHelper.alwaysGreyColor),
-                    ),
-                    Text(
-                      "weeeek",
-                      style: TextHelper.w700s16
-                          .copyWith(color: ColorHelper.defaultThemeColor),
-                    ),
-                    isBought
-                        ? const TrainingScheduleCard()
-                        : const TrainingsIsNotAddedCard(),
-                  ],
-                ),
+          return SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(16.r),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Мои курсы",
+                    style: TextHelper.w700s16
+                        .copyWith(color: ColorHelper.defaultThemeColor),
+                  ),
+                  isBought
+                      ? const MyCourseCard()
+                      : const CourseIsNotBoughtCard(),
+                  Text(
+                    "Расписание тренировок",
+                    style: TextHelper.w700s16
+                        .copyWith(color: ColorHelper.defaultThemeColor),
+                  ),
+                  SizedBox(height: 28.h),
+                  Text(
+                    date.toString(),
+                    style: TextHelper.w500s10
+                        .copyWith(color: ColorHelper.alwaysGreyColor),
+                  ),
+                  WeekScheduleTabbar(),
+                  // isBought
+                  //     ? const TrainingScheduleCard()
+                  //     : const TrainingsIsNotAddedCard(),
+                ],
               ),
             ),
           );
