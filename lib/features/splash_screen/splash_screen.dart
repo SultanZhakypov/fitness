@@ -1,6 +1,4 @@
 import 'package:BodyPower/bottom_navigation_bar.dart';
-import 'package:BodyPower/features/user/presentation/screens/signin_screen.dart';
-import 'package:BodyPower/features/user/presentation/screens/welcome_screen.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,3 +46,11 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+// StreamBuilder<User?>(
+//                 stream: FirebaseAuth.instance.authStateChanges(),
+//                 builder: (context, snapshot) {
+//                   if (snapshot.hasData) {
+//                     return const BottomNavBar();
+//                   }
+//                   return const SplashScreen();
+//                 });

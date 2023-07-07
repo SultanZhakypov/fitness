@@ -34,7 +34,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
 
   @override
   void dispose() {
-    widget.phoneNumberController.dispose();
+    // widget.phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -43,170 +43,149 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
     return Form(
       key: formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 20.h, bottom: 15.h),
-            child: Text(
-              'Номер телефона',
-              style: TextHelper.w700s20.copyWith(color: ColorHelper.greyD1D3D3),
+          SizedBox(
+            width: 222.w,
+            height: 32.h,
+            child: TextFormField(
+              keyboardType: TextInputType.phone,
+              controller: widget.phoneNumberController,
+              style: TextHelper.w700s18.copyWith(color: ColorHelper.greyD1D3D3),
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: ColorHelper.white10,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: ColorHelper.blue01DDEB,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.red,
+                  ),
+                ),
+                filled: true,
+                fillColor: ColorHelper.alwaysGreyColor,
+                prefixIcon: CountryCodePicker(
+                  padding: EdgeInsets.zero,
+                  favorite: const ['+996', 'KG'],
+                  onChanged: (CountryCode countryCode) {
+                    setState(() {
+                      _countryCode = countryCode;
+                    });
+                  },
+                  initialSelection: 'KG',
+                  textStyle: TextHelper.w500s12
+                      .copyWith(color: ColorHelper.countryCodeText),
+                  showCountryOnly: false,
+                  showOnlyCountryWhenClosed: false,
+                  alignLeft: false,
+                ),
+              ),
+              // validator: (value) {
+              //   if (value!.length == 0) {
+              //     return 'Please enter valid phone number';
+              //   }
+              //   return null;
+              // },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              onChanged: (value) {
+                setState(() {
+                  widget.phoneNumberController.text.isEmpty != true;
+                });
+              },
             ),
-          ),
-          TextFormField(
-            keyboardType: TextInputType.phone,
-            controller: widget.phoneNumberController,
-            style: TextHelper.w700s18.copyWith(color: ColorHelper.greyD1D3D3),
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(
-                  width: 2,
-                  color: ColorHelper.white10,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(
-                  width: 2,
-                  color: ColorHelper.blue01DDEB,
-                ),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                  width: 2,
-                  color: Colors.red,
-                ),
-              ),
-              hintText: 'Например: 777123123',
-              hintStyle: TextHelper.w700s15
-                  .copyWith(color: ColorHelper.greyD1D3D3.withOpacity(0.8)),
-              suffixIcon: widget.phoneNumberController.text.length == 0
-                  ? const Icon(Icons.drive_file_rename_outline_outlined)
-                  : const Icon(Icons.check),
-              suffixIconColor: ColorHelper.greyD1D3D3,
-              filled: true,
-              fillColor: ColorHelper.black38,
-              prefixIcon: CountryCodePicker(
-                favorite: const ['+996', 'KG'],
-                onChanged: (CountryCode countryCode) {
-                  setState(() {
-                    _countryCode = countryCode;
-                  });
-                },
-                initialSelection: 'KG',
-                textStyle:
-                    TextHelper.w700s18.copyWith(color: ColorHelper.greyD1D3D3),
-                showCountryOnly: false,
-                showOnlyCountryWhenClosed: false,
-                alignLeft: false,
-              ),
-            ),
-            validator: (value) {
-              if (value!.length == 0) {
-                return 'Please enter valid phone number';
-              }
-              return null;
-            },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            onChanged: (value) {
-              setState(() {
-                widget.phoneNumberController.text.isEmpty != true;
-              });
-            },
           ),
           // SignUpTextFieldCard(
           //   phoneNumberController: widget.phoneNumberController,
           //   countryCode: countryCode,
           // ),
-          InternationalPhoneNumberInput(
-            onInputChanged: (PhoneNumber number) {
-              print(number.phoneNumber);
-            },
-            onInputValidated: (bool value) {
-              print(value);
-            },
-            selectorConfig: SelectorConfig(
-              countryComparator: (p0, p1) {
-                return 0;
-              },
-              setSelectorButtonAsPrefixIcon: true,
-              leadingPadding: 15.w,
-              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-            ),
-            ignoreBlank: false,
-            autoValidateMode: AutovalidateMode.disabled,
-            selectorTextStyle:
-                TextHelper.w700s18.copyWith(color: ColorHelper.greyD1D3D3),
-            initialValue: number,
-            textFieldController: widget.phoneNumberController,
-            formatInput: true,
-            keyboardType: const TextInputType.numberWithOptions(
-                signed: true, decimal: true),
-            inputBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(
-                width: 2,
-                color: ColorHelper.white10,
-              ),
-            ),
-            inputDecoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(
-                  width: 2,
-                  color: ColorHelper.white10,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(
-                  width: 2,
-                  color: ColorHelper.blue01DDEB,
-                ),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                  width: 2,
-                  color: Colors.red,
-                ),
-              ),
-              hintStyle: TextHelper.w700s15
-                  .copyWith(color: ColorHelper.greyD1D3D3.withOpacity(0.8)),
-              suffixIcon: widget.phoneNumberController.text.length == 0
-                  ? const Icon(Icons.drive_file_rename_outline_outlined)
-                  : const Icon(Icons.check),
-              suffixIconColor: ColorHelper.greyD1D3D3,
-              filled: true,
-              fillColor: ColorHelper.black38,
-            ),
-            onSaved: (PhoneNumber number) {
-              print('On Saved: $number');
-            },
-          ),
+          // InternationalPhoneNumberInput(
+          //   onInputChanged: (PhoneNumber number) {
+          //     print(number.phoneNumber);
+          //   },
+          //   onInputValidated: (bool value) {
+          //     print(value);
+          //   },
+          //   selectorConfig: SelectorConfig(
+          //     countryComparator: (p0, p1) {
+          //       return 0;
+          //     },
+          //     setSelectorButtonAsPrefixIcon: true,
+          //     leadingPadding: 15.w,
+          //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+          //   ),
+          //   ignoreBlank: false,
+          //   autoValidateMode: AutovalidateMode.disabled,
+          //   selectorTextStyle:
+          //       TextHelper.w700s18.copyWith(color: ColorHelper.greyD1D3D3),
+          //   initialValue: number,
+          //   textFieldController: widget.phoneNumberController,
+          //   formatInput: true,
+          //   keyboardType: const TextInputType.numberWithOptions(
+          //       signed: true, decimal: true),
+          //   inputBorder: OutlineInputBorder(
+          //     borderRadius: BorderRadius.circular(15),
+          //     borderSide: BorderSide(
+          //       width: 2,
+          //       color: ColorHelper.white10,
+          //     ),
+          //   ),
+          //   inputDecoration: InputDecoration(
+          //     enabledBorder: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //       borderSide: BorderSide(
+          //         width: 2,
+          //         color: ColorHelper.white10,
+          //       ),
+          //     ),
+          //     focusedBorder: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //       borderSide: BorderSide(
+          //         width: 2,
+          //         color: ColorHelper.blue01DDEB,
+          //       ),
+          //     ),
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //       borderSide: const BorderSide(
+          //         width: 2,
+          //         color: Colors.red,
+          //       ),
+          //     ),
+          //     hintStyle: TextHelper.w700s15
+          //         .copyWith(color: ColorHelper.greyD1D3D3.withOpacity(0.8)),
+          //     suffixIcon: widget.phoneNumberController.text.length == 0
+          //         ? const Icon(Icons.drive_file_rename_outline_outlined)
+          //         : const Icon(Icons.check),
+          //     suffixIconColor: ColorHelper.greyD1D3D3,
+          //     filled: true,
+          //     fillColor: ColorHelper.black38,
+          //   ),
+          //   onSaved: (PhoneNumber number) {
+          //     print('On Saved: $number');
+          //   },
+          // ),
           // ElevatedButton(
           //   onPressed: () {
           //     formKey.currentState?.validate();
           //   },
           //   child: Text('Validate'),
           // ),
-          ElevatedButton(
-            onPressed: () {
-              getPhoneNumber(widget.phoneNumberController.text, '');
-            },
-            child: Text('Update'),
-          ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     formKey.currentState?.save();
-          //   },
-          //   child: Text('Save'),
-          // ),
 
           Padding(
-            padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
-            child: SignUpButtonCard(
+            padding: EdgeInsets.only(top: 16.h),
+            child: SendOtpButton(
               phoneNumberController: widget.phoneNumberController,
               countryCode: _countryCode,
             ),

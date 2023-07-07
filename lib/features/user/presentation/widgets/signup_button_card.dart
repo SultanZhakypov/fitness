@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../../../../internal/helpers/text_helper.dart';
 
-class SignUpButtonCard extends StatefulWidget {
-  const SignUpButtonCard({
+class SendOtpButton extends StatefulWidget {
+  const SendOtpButton({
     super.key,
     required this.phoneNumberController,
     required this.countryCode,
@@ -17,10 +17,10 @@ class SignUpButtonCard extends StatefulWidget {
   final CountryCode countryCode;
 
   @override
-  State<SignUpButtonCard> createState() => _SignUpButtonCardState();
+  State<SendOtpButton> createState() => _SendOtpButtonState();
 }
 
-class _SignUpButtonCardState extends State<SignUpButtonCard> {
+class _SendOtpButtonState extends State<SendOtpButton> {
   void _sendOtp({required String phoneNumber, required BuildContext context}) {
     final phoneNumberWithCode = "${widget.countryCode.dialCode}$phoneNumber";
     context.read<AuthentificationBloc>().add(
@@ -35,31 +35,22 @@ class _SignUpButtonCardState extends State<SignUpButtonCard> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
+    return ElevatedButton(
+      onPressed: () {
         _sendOtp(
             phoneNumber: widget.phoneNumberController.text, context: context);
       },
-      child: Container(
-        width: 1.sw,
-        height: 60.h,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          boxShadow: [BoxShadow(color: Colors.purple.shade900, blurRadius: 6)],
-          borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(
-            colors: [
-              ColorHelper.blue01DDEB,
-              Colors.blue,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+      style: ElevatedButton.styleFrom(
+          fixedSize: Size(
+            224.w,
+            36.h,
           ),
-        ),
-        child: Text(
-          'Отправить код',
-          style: TextHelper.w700s20.copyWith(color: ColorHelper.whiteECECEC),
-        ),
+          backgroundColor: ColorHelper.buttonColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
+      child: Text(
+        "Начать свой путь",
+        style: TextHelper.w500s12.copyWith(color: ColorHelper.buttonTextColor),
       ),
     );
   }

@@ -19,7 +19,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController phoneNumberController;
-
   late TextEditingController codeController;
 
   @override
@@ -29,12 +28,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    phoneNumberController.dispose();
-    codeController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // phoneNumberController.dispose();
+  //   // codeController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +43,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         leading: const BackLeadingCard(),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
-          "Зарегистрироваться",
-          style: TextHelper.w700s23.copyWith(color: ColorHelper.whiteECECEC),
-        ),
       ),
       backgroundColor: ColorHelper.backgroundColor,
       body: BlocConsumer<AuthentificationBloc, AuthentificationState>(
@@ -79,21 +74,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
             );
           }
 
-          return SafeArea(
+          return SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+              padding: EdgeInsets.only(top: 72.h),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    "Зарегистрируйтесь одним из следующих вариантов",
-                    style: TextHelper.w700s15
-                        .copyWith(color: ColorHelper.greyD1D3D3),
+                  Image.asset(
+                    "assets/icons/body_power_icon.png",
+                    width: 124.w,
+                    height: 139.h,
+                    color: ColorHelper.authenticationIconColor,
                   ),
-                  SizedBox(
-                    height: 15.h,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 18.h,
+                      bottom: 12.h,
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Изменения ",
+                        style: TextHelper.w700s20
+                            .copyWith(color: Color(0xff55BA30)),
+                        children: [
+                          TextSpan(
+                              text: "начнутся здесь",
+                              style: TextHelper.w700s20
+                                  .copyWith(color: ColorHelper.defaultThemeColor)),
+                        ],
+                      ),
+                    ),
                   ),
-                  const LoginHelperCards(),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+                    child: Text(
+                      "Войдите или создайте аккаунт, чтобы получить персональную программу тренировок!",
+                      textAlign: TextAlign.center,
+                      style: TextHelper.w600s12
+                          .copyWith(color: ColorHelper.defaultThemeColor),
+                    ),
+                  ),
                   if (state is! PhoneAuthCodeSentSuccess)
                     PhoneNumberWidget(
                       phoneNumberController: phoneNumberController,
@@ -103,6 +125,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       codeController: codeController,
                       verificationId: state.verificationId,
                     ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                    child: Text(
+                      "или войти через",
+                      style: TextHelper.w500s10
+                          .copyWith(color: ColorHelper.alwaysGreyColor),
+                    ),
+                  ),
+                  const LoginHelperCards(),
                 ],
               ),
             ),

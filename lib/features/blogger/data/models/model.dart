@@ -1,13 +1,13 @@
-List<String> organImages = [
-  "assets/images/legs.png",
+List<String> trainingImages = [
+  "assets/images/training22.png",
+  "assets/images/training11.png",
+  "assets/images/training33.png",
   "assets/images/back.png",
-  "assets/images/shoulders.png",
-  "assets/images/young_BodyPower.png",
-  "assets/images/base_training.png",
 ];
 
-List<String> organNames = [
-  "legs",
-  "backs",
-  "shoulders",
+List<String> trainingNames = [
+  "Силовой верх",
+  "Кардио",
+  "Растяжка",
+  "Присидание",
 ];
