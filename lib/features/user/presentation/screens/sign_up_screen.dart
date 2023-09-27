@@ -100,8 +100,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           TextSpan(
                               text: "начнутся здесь",
-                              style: TextHelper.w700s20
-                                  .copyWith(color: ColorHelper.defaultThemeColor)),
+                              style: TextHelper.w700s20.copyWith(
+                                  color: ColorHelper.defaultThemeColor)),
                         ],
                       ),
                     ),
@@ -116,23 +116,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           .copyWith(color: ColorHelper.defaultThemeColor),
                     ),
                   ),
-                  if (state is! PhoneAuthCodeSentSuccess)
-                    PhoneNumberWidget(
-                      phoneNumberController: phoneNumberController,
-                    )
-                  else
-                    OtpWidget(
-                      codeController: codeController,
-                      verificationId: state.verificationId,
-                    ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12.h),
-                    child: Text(
-                      "или войти через",
-                      style: TextHelper.w500s10
-                          .copyWith(color: ColorHelper.alwaysGreyColor),
-                    ),
-                  ),
+                  // if (state is! PhoneAuthCodeSentSuccess)
+                  //   PhoneNumberWidget(
+                  //     phoneNumberController: phoneNumberController,
+                  //   )
+                  // else
+                  //   OtpWidget(
+                  //     codeController: codeController,
+                  //     verificationId: state.verificationId,
+                  //   ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(vertical: 12.h),
+                  //   child: Text(
+                  //     "или войти через",
+                  //     style: TextHelper.w500s10
+                  //         .copyWith(color: ColorHelper.alwaysGreyColor),
+                  //   ),
+                  // ),
                   const LoginHelperCards(),
                 ],
               ),

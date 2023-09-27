@@ -8,7 +8,7 @@ class SelectGenderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160.h,
+      height: 161.h,
       width: 343.w,
       margin: EdgeInsets.only(
         top: 30.h,
@@ -49,41 +49,53 @@ class SelectGenderCard extends StatelessWidget {
           SizedBox(
             width: 24.w,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 25.h,
-                  bottom: 8.h,
-                ),
-                child: Text(
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 22.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
                   "Курс для Мужчин 👱‍♂️‍️",
-                  style:
-                      TextHelper.w600s10.copyWith(color: ColorHelper.defaultThemeColor),
+                  style: TextHelper.w600s10
+                      .copyWith(color: ColorHelper.defaultThemeColor),
                 ),
-              ),
-              SizedBox(
-                width: 156.w,
-                child: Text(
-                  "Если хотите изменить пол на женский, нажмите кнопку “Изменить пол”",
-                  style: TextHelper.w500s10
-                      .copyWith(color: ColorHelper.alwaysGrey929292),
+                SizedBox(
+                  width: 156.w,
+                  child: Text(
+                    "Если хотите изменить пол на женский, нажмите кнопку “Изменить пол”",
+                    style: TextHelper.w500s10
+                        .copyWith(color: ColorHelper.alwaysGrey929292),
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 21.h),
-                width: 157.w,
-                height: 28.h,
-                color: Colors.green,
-                alignment: Alignment.center,
-                child: Text(
-                  "Изменить пол",
-                  style: TextHelper.w500s12
-                      .copyWith(color: ColorHelper.buttonTextColor),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.r)),
+                    minimumSize: Size(
+                      157.w,
+                      28.h,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        "Изменить пол",
+                        style: TextHelper.w500s12
+                            .copyWith(color: ColorHelper.buttonTextColor),
+                      ),
+                      SizedBox(width: 5.w),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12.r,
+                        color: ColorHelper.buttonTextColor,
+                      )
+                    ],
+                  ),
                 ),
-              )
-            ],
+              ],
+            ),
           )
         ],
       ),

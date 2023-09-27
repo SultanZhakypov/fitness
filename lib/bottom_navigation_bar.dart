@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/achievement_screen/presentation/screens/achievements_screen.dart';
-import 'features/user/presentation/screens/profile_screen.dart';
+import 'features/user/presentation/screens/general_settings_screen.dart';
 import 'internal/custom_appbar.dart';
 import 'internal/helpers/text_helper.dart';
 
