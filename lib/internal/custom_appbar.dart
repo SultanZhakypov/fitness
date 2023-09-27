@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../features/user/presentation/screens/general_settings_screen.dart';
 import '../features/user/presentation/screens/sign_up_screen.dart';
 import 'helpers/color_helper.dart';

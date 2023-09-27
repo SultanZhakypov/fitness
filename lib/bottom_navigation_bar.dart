@@ -1,15 +1,11 @@
 import 'package:BodyPower/features/user/presentation/screens/home_page.dart';
 import 'package:BodyPower/features/news_page/presentation/screens/news_screen.dart';
 import 'package:BodyPower/features/blogger/presentation/screens/course_list_screen.dart';
-import 'package:BodyPower/features/user/presentation/screens/sign_up_screen.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/achievement_screen/presentation/screens/achievements_screen.dart';
-import 'features/user/presentation/screens/general_settings_screen.dart';
 import 'internal/custom_appbar.dart';
-import 'internal/helpers/text_helper.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int? selectedTab;
