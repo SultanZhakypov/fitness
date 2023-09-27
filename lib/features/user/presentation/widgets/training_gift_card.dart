@@ -11,10 +11,11 @@ class TrainingGiftCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Lottie.asset(
-        "assets/images/lottie_777.json",
-        fit: BoxFit.cover,
-      ),
+      Image.asset("assets/images/splash.png"),
+      // Lottie.asset(
+      //   "assets/images/lottie_777.json",
+      //   fit: BoxFit.cover,
+      // ),
       Padding(
         padding: EdgeInsets.all(12.r),
         child: Icon(

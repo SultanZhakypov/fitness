@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../features/user/presentation/screens/profile_screen.dart';
+import '../features/user/presentation/screens/general_settings_screen.dart';
 import '../features/user/presentation/screens/sign_up_screen.dart';
 import 'helpers/color_helper.dart';
 import 'helpers/text_helper.dart';
@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text("${snapshot.data!.phoneNumber.toString()}");
+              return Text("${snapshot.data!.displayName.toString()}");
             }
             return InkWell(
               onTap: () {
@@ -98,7 +98,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                MaterialPageRoute(builder: (context) => const GenerealSettingsScreen()));
           },
         ),
       ],
