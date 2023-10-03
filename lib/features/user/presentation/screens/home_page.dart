@@ -1,3 +1,4 @@
+import 'package:BodyPower/features/error_screen/error_screen.dart';
 import 'package:BodyPower/features/user/presentation/widgets/course_isnot_bought_card.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +37,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<BloggerBloc, BloggerState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is ErrorState) {
+         Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const ErrorScreen(),
+              ),
+            );
+        }
+      },
       builder: (context, state) {
         if (state is BloggerLoadingState) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
           );
         }
+        
         if (state is FetchedBloggersState) {
           return SafeArea(
             child: Padding(

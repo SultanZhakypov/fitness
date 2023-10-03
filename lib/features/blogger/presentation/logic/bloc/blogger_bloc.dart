@@ -16,6 +16,7 @@ class BloggerBloc extends Bloc<BloggerEvent, BloggerState> {
         emit(FetchedBloggersState(bloggers));
       } catch (e) {
         log(" BLOGGERS    ${e.toString()}");
+        emit(ErrorState(e.toString()));
       }
 
       // BloggerUseCase()

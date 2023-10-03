@@ -16,8 +16,8 @@ class BloggerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.zero,
-      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.symmetric(vertical: 28.h),
+      // physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Container(
@@ -65,7 +65,13 @@ class BloggerCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const CourseInformationScreen()));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

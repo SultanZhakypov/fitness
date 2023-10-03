@@ -1,11 +1,10 @@
+import 'package:BodyPower/features/blogger/presentation/widgets/blogger_card.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../internal/helpers/color_helper.dart';
 import '../logic/bloc/blogger_bloc.dart';
-import '../widgets/select_gender_card.dart';
-import '../widgets/select_course_tabbar_widget.dart';
 
 class CourseListScreen extends StatefulWidget {
   const CourseListScreen({super.key});
@@ -52,9 +51,8 @@ class _CourseListScreenState extends State<CourseListScreen> {
                     style: TextHelper.w700s20
                         .copyWith(color: ColorHelper.defaultThemeColor),
                   ),
-                  SelectGenderCard(),
-                  SelectCourseTabbarWidget(
-                    bloggers: state.bloggers,
+                  BloggerCard(
+                    bloggerModel: state.bloggers,
                   ),
                 ],
               ),

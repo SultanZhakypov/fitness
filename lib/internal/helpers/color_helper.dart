@@ -51,6 +51,11 @@ class ColorHelper {
   static Color unAthenticatedText = const Color(0xffBBFFA3);
   static Color countryCodeText = const Color(0xff606060);
   static Color newsTimeColor = const Color(0xff777777);
+   static Color phoneNumberColor = const Color(0xff777777);
   static Color exercisesListColor = const Color(0xff707070);
   static Color recommendedTime = const Color(0xff707070);
+  static Color inviteFriendColor = const Color(0xff707070);
+  static Color generalIconColor = const Color(0xff55BA30);
+   static Color logOutIcon = const Color(0xffFF0000);
+   static Color healthAndSafetyIcon = const Color(0xff00B2FF);
 }
