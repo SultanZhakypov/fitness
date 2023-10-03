@@ -38,12 +38,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: const BackLeadingCard(),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       backgroundColor: ColorHelper.backgroundColor,
       body: BlocConsumer<AuthentificationBloc, AuthentificationState>(
         listener: (context, state) {
