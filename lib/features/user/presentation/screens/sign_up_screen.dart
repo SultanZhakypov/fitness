@@ -1,5 +1,4 @@
 import 'package:BodyPower/bottom_navigation_bar.dart';
-import 'package:BodyPower/features/user/presentation/widgets/otp_widget.dart';
 import 'package:BodyPower/features/user/presentation/widgets/login_helper_cards.dart';
 import 'package:BodyPower/internal/helpers/color_helper.dart';
 import 'package:BodyPower/internal/helpers/text_helper.dart';

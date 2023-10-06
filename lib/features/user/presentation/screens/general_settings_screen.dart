@@ -19,7 +19,7 @@ class GenerealSettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
 
     return BlocConsumer<AuthentificationBloc, AuthentificationState>(
       listener: (context, state) {
@@ -32,10 +32,7 @@ class GenerealSettingsScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-
-        if(state is UnAuthenticated){
-          
-        }
+        if (state is UnAuthenticated) {}
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -75,7 +72,7 @@ class GenerealSettingsScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: NetworkImage("${user.photoURL}"),
+                              image: NetworkImage("${user?.photoURL}"),
                             ),
                           ),
                         ),
@@ -85,17 +82,17 @@ class GenerealSettingsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              user.displayName != null
+                              user?.displayName != null
                                   ? Text(
-                                      user.displayName.toString(),
+                                      user?.displayName ?? '',
                                       style: TextHelper.w700s16.copyWith(
                                           color: ColorHelper.whiteECECEC),
                                     )
                                   : const SizedBox(),
                               SizedBox(height: 8.h),
-                              user.phoneNumber != null
+                              user?.phoneNumber != null
                                   ? Text(
-                                      user.phoneNumber.toString(),
+                                      user?.phoneNumber ?? '',
                                       style: TextHelper.w500s10.copyWith(
                                           color: ColorHelper.phoneNumberColor),
                                     )

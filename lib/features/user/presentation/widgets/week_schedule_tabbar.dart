@@ -15,7 +15,7 @@ class WeekScheduleTabbar extends StatelessWidget {
         length: 6,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             TabBar(
               padding: EdgeInsets.only(
                 bottom: 8.h,
@@ -25,37 +25,24 @@ class WeekScheduleTabbar extends StatelessWidget {
               labelColor: ColorHelper.exerciseNameDefaultColor,
               unselectedLabelColor: ColorHelper.alwaysGreyColor,
               indicatorColor: ColorHelper.exerciseNameDefaultColor,
-              tabs: const <Widget>[
-                Tab(
-                  text: "Пн",
-                ),
-                Tab(
-                  text: "Вт",
-                ),
-                Tab(
-                  text: "Ср",
-                ),
-                Tab(
-                  text: "Чт",
-                ),
-                Tab(
-                  text: "Пт",
-                ),
-                Tab(
-                  text: "Сб",
-                ),
+              tabs: const [
+                Tab(text: "Пн"),
+                Tab(text: "Вт"),
+                Tab(text: "Ср"),
+                Tab(text: "Чт"),
+                Tab(text: "Пт"),
+                Tab(text: "Сб"),
               ],
             ),
             const Expanded(
               child: TabBarView(
-                // physics: NeverScrollableScrollPhysics(),
-                children: <Widget>[
-                  TrainingScheduleCard(),
-                  TrainingScheduleCard(),
-                  TrainingScheduleCard(),
-                  TrainingScheduleCard(),
-                  TrainingScheduleCard(),
-                  TrainingScheduleCard(),
+                children: [
+                  TrainingScheduleCard(dayOfTheWeek: 'Monday'),
+                  TrainingScheduleCard(dayOfTheWeek: 'Tuesday'),
+                  TrainingScheduleCard(dayOfTheWeek: 'Wednesday'),
+                  TrainingScheduleCard(dayOfTheWeek: 'Thursday'),
+                  TrainingScheduleCard(dayOfTheWeek: 'Friday'),
+                  TrainingScheduleCard(dayOfTheWeek: 'Saturday'),
                 ],
               ),
             )
