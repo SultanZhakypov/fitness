@@ -16,6 +16,12 @@ class LoginHelperCards extends StatelessWidget {
     );
   }
 
+  void _authenticateWithApple(context) {
+    BlocProvider.of<AuthentificationBloc>(context).add(
+      AppleSignInRequested(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -59,7 +65,9 @@ class LoginHelperCards extends StatelessWidget {
               borderRadius: BorderRadius.circular(14), // <-- Radius
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            _authenticateWithApple(context);
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

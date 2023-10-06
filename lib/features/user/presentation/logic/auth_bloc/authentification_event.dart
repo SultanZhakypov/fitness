@@ -73,4 +73,4 @@ class GoogleSignInRequested extends AuthentificationEvent {}
 
 class SignOutRequested extends AuthentificationEvent {}
 
-class AplleSignInRequested extends AuthentificationEvent {}
+class AppleSignInRequested extends AuthentificationEvent {}

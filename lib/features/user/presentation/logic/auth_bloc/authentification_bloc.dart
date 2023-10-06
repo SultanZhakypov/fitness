@@ -99,6 +99,15 @@ class AuthentificationBloc
           .then((value) => emit(Authenticated()))
           .onError((error, stackTrace) => emit(UnAuthenticated()));
     });
+    on<AppleSignInRequested>((event, emit) async {
+      emit(AuthLoadingState());
+
+      await authUseCase
+          .signInWithApple()
+          .then((value) => emit(Authenticated()))
+          .onError((error, stackTrace) => emit(UnAuthenticated()));
+    });
+    
 
     on<SignOutRequested>((event, emit) async {
       emit(AuthLoadingState());

@@ -2,10 +2,27 @@ import 'dart:developer';
 import 'package:BodyPower/features/user/domain/repositories/authentification_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AuthentificationRepositoryImpl implements AuthentificationRepository {
   final _auth = FirebaseAuth.instance;
   var verificationId = "";
+
+  @override
+  Future<void> signInWithApple() async {
+    try {
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+      
+    } catch (e) {
+      log("ERROR   GOOGLE SIGN IN ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
 
   @override
   Future<void> signInWithGoogle() async {
@@ -80,8 +97,8 @@ class AuthentificationRepositoryImpl implements AuthentificationRepository {
   }) async {
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      verificationCompleted:verificationCompleted,
-      codeSent:codeSent,
+      verificationCompleted: verificationCompleted,
+      codeSent: codeSent,
       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
       verificationFailed: verificationFailed,
       // (e) {
