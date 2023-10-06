@@ -36,4 +36,6 @@ class AuthentificationUseCase {
 
   Future<void> signInWithGoogle() async =>
       await authentificationRepositoryImpl.signInWithGoogle();
+    Future<void> signInWithApple() async =>
+      await authentificationRepositoryImpl.signInWithApple();  
 }

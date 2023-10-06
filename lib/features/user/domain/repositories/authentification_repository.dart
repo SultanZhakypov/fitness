@@ -13,5 +13,6 @@ abstract class AuthentificationRepository {
   Future<void> signIn({required String email, required String password});
   Future<void> signOut();
   Future<void> signInWithGoogle();
+  Future<void> signInWithApple();
   // Future<void> signInWithApple();
 }
