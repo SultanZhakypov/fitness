@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
             RepositoryProvider<BloggerUseCase>(
                 create: (context) => BloggerUseCase()),
             RepositoryProvider<UserUseCase>(create: (context) => UserUseCase()),
-            RepositoryProvider<AuthentificationUseCase>(
-                create: (context) => AuthentificationUseCase()),
+            
             RepositoryProvider<NewsUseCase>(create: (context) => NewsUseCase()),
             RepositoryProvider<VideosUsecase>(
               create: (context) => VideosUsecase(),
