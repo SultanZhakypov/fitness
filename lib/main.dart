@@ -21,6 +21,7 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+
 var flip = FlutterLocalNotificationsPlugin();
 @pragma('vm:entry-point')
 void callbackDispatcher() {
