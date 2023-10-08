@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../logic/auth_bloc/authentification_bloc.dart';
-import '../widgets/back_leading_card.dart';
-import '../widgets/phone_number_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,13 +15,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late TextEditingController phoneNumberController;
-  late TextEditingController codeController;
+  // late TextEditingController phoneNumberController;
+  // late TextEditingController codeController;
 
   @override
   void initState() {
-    phoneNumberController = TextEditingController();
-    codeController = TextEditingController();
+    // phoneNumberController = TextEditingController();
+    // codeController = TextEditingController();
     super.initState();
   }
 
